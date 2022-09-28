@@ -1,0 +1,156 @@
+.ae-workspace-light code[class*='language-'],
+.ae-workspace-light pre[class*='language-'] {
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.ae-workspace-light pre[class*='language-']::-moz-selection,
+.ae-workspace-light code[class*='language-'] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+.ae-workspace-light pre[class*='language-']::selection,
+.ae-workspace-light code[class*='language-'] ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+@media print {
+  .ae-workspace-light code[class*='language-'],
+  .ae-workspace-light pre[class*='language-'] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+.ae-workspace-light pre[class*='language-'] {
+  margin: 0;
+  padding: 10px 0 0 10px;
+  overflow: auto;
+  box-shadow: 0 2px 4px rgba(50, 50, 93, 0.1), 0 0 2px rgba(50, 50, 93, 0.15);
+}
+
+.ae-workspace-light code[class*='language-'] {
+  padding: 0 10px 10px 0px;
+  display: block;
+  overflow: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #bcd transparent;
+}
+.ae-workspace-light code[class*='language-']::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.ae-workspace-light code[class*='language-']::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.ae-workspace-light code[class*='language-']::-webkit-scrollbar-thumb {
+  background: #bcd;
+  border-radius: 3px;
+}
+.ae-workspace-light code[class*='language-']::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* Inline code */
+.ae-workspace-light :not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.ae-workspace-light .token {
+  font-family: monospace;
+}
+
+.ae-workspace-light .token.comment,
+.ae-workspace-light .token.prolog,
+.ae-workspace-light .token.doctype,
+.ae-workspace-light .token.cdata {
+  color: grey;
+}
+
+.ae-workspace-light .token.punctuation {
+  color: black;
+}
+
+.ae-workspace-light .token.namespace {
+  opacity: 0.7;
+}
+
+.ae-workspace-light .token.property {
+  color: black;
+}
+
+.ae-workspace-light .token.tag,
+.ae-workspace-light .token.boolean,
+.ae-workspace-light .token.number,
+.ae-workspace-light .token.constant,
+.ae-workspace-light .token.symbol,
+.ae-workspace-light .token.deleted {
+  color: #164;
+}
+
+.ae-workspace-light .token.selector,
+.ae-workspace-light .token.attr-name,
+.ae-workspace-light .token.string,
+.ae-workspace-light .token.char,
+.ae-workspace-light .token.builtin,
+.ae-workspace-light .token.inserted {
+  color: #a11;
+}
+
+.ae-workspace-light .token.operator,
+.ae-workspace-light .token.entity,
+.ae-workspace-light .token.url,
+.ae-workspace-light .language-css .token.string,
+.ae-workspace-light .style .token.string {
+  color: black;
+}
+
+.ae-workspace-light .token.atrule,
+.ae-workspace-light .token.attr-value,
+.ae-workspace-light .token.keyword {
+  color: #219;
+}
+
+.ae-workspace-light .token.function,
+.ae-workspace-light .token.class-name {
+  color: #dd4a68;
+}
+
+.ae-workspace-light .token.regex,
+.ae-workspace-light .token.important,
+.ae-workspace-light .token.variable {
+  color: #e90;
+}
+
+.ae-workspace-light .token.important,
+.ae-workspace-light .token.bold {
+  font-weight: bold;
+}
+
+.ae-workspace-light .token.italic {
+  font-style: italic;
+}
+
+.ae-workspace-light .token.entity {
+  cursor: help;
+}
