@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://www.algoexpert.io/questions/largest-range -->
+<html lang="en" style="font-size: 1px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.ͼ1.cm-editor.cm-focused {outline: 1px dotted #212121;}
+.ͼ1.cm-editor {position: relative !important; box-sizing: border-box; display: flex !important; flex-direction: column;}
+.ͼ1 .cm-scroller {display: flex !important; align-items: flex-start !important; font-family: monospace; line-height: 1.4; height: 100%; overflow-x: auto; position: relative; z-index: 0;}
+.ͼ1 .cm-content[contenteditable=true] {-webkit-user-modify: read-write-plaintext-only;}
+.ͼ1 .cm-content {margin: 0; flex-grow: 2; flex-shrink: 0; min-height: 100%; display: block; white-space: pre; word-wrap: normal; box-sizing: border-box; padding: 4px 0; outline: none;}
+.ͼ1 .cm-lineWrapping {white-space: pre-wrap; white-space: break-spaces; word-break: break-word; overflow-wrap: anywhere; flex-shrink: 1;}
+.ͼ2 .cm-content {caret-color: black;}
+.ͼ3 .cm-content {caret-color: white;}
+.ͼ1 .cm-line {display: block; padding: 0 2px 0 4px;}
+.ͼ1 .cm-selectionLayer {z-index: -1; contain: size style;}
+.ͼ1 .cm-selectionBackground {position: absolute;}
+.ͼ2 .cm-selectionBackground {background: #d9d9d9;}
+.ͼ3 .cm-selectionBackground {background: #222;}
+.ͼ2.cm-focused .cm-selectionBackground {background: #d7d4f0;}
+.ͼ3.cm-focused .cm-selectionBackground {background: #233;}
+.ͼ1 .cm-cursorLayer {z-index: 100; contain: size style; pointer-events: none;}
+.ͼ1.cm-focused .cm-cursorLayer {animation: steps(1) cm-blink 1.2s infinite;}
+@keyframes cm-blink {50% {opacity: 0;}}
+@keyframes cm-blink2 {50% {opacity: 0;}}
+.ͼ1 .cm-cursor, .ͼ1 .cm-dropCursor {position: absolute; border-left: 1.2px solid black; margin-left: -0.6px; pointer-events: none;}
+.ͼ1 .cm-cursor {display: none;}
+.ͼ3 .cm-cursor {border-left-color: #444;}
+.ͼ1.cm-focused .cm-cursor {display: block;}
+.ͼ2 .cm-activeLine {background-color: #f3f9ff;}
+.ͼ3 .cm-activeLine {background-color: #223039;}
+.ͼ2 .cm-specialChar {color: red;}
+.ͼ3 .cm-specialChar {color: #f78;}
+.ͼ1 .cm-gutters {flex-shrink: 0; display: flex; height: 100%; box-sizing: border-box; left: 0; z-index: 200;}
+.ͼ2 .cm-gutters {background-color: #f5f5f5; color: #6c6c6c; border-right: 1px solid #ddd;}
+.ͼ3 .cm-gutters {background-color: #333338; color: #ccc;}
+.ͼ1 .cm-gutter {display: flex !important; flex-direction: column; flex-shrink: 0; box-sizing: border-box; min-height: 100%; overflow: hidden;}
+.ͼ1 .cm-gutterElement {box-sizing: border-box;}
+.ͼ1 .cm-lineNumbers .cm-gutterElement {padding: 0 3px 0 5px; min-width: 20px; text-align: right; white-space: nowrap;}
+.ͼ2 .cm-activeLineGutter {background-color: #e2f2ff;}
+.ͼ3 .cm-activeLineGutter {background-color: #222227;}
+.ͼ1 .cm-panels {box-sizing: border-box; position: sticky; left: 0; right: 0;}
+.ͼ2 .cm-panels {background-color: #f5f5f5; color: black;}
+.ͼ2 .cm-panels-top {border-bottom: 1px solid #ddd;}
+.ͼ2 .cm-panels-bottom {border-top: 1px solid #ddd;}
+.ͼ3 .cm-panels {background-color: #333338; color: white;}
+.ͼ1 .cm-tab {display: inline-block; overflow: hidden; vertical-align: bottom;}
+.ͼ1 .cm-widgetBuffer {vertical-align: text-top; height: 1em; display: inline;}
+.ͼ1 .cm-placeholder {color: #888; display: inline-block; vertical-align: top;}
+.ͼ1 .cm-button {vertical-align: middle; color: inherit; font-size: 70%; padding: .2em 1em; border-radius: 1px;}
+.ͼ2 .cm-button:active {background-image: linear-gradient(#b4b4b4, #d0d3d6);}
+.ͼ2 .cm-button {background-image: linear-gradient(#eff1f5, #d9d9df); border: 1px solid #888;}
+.ͼ3 .cm-button:active {background-image: linear-gradient(#111, #333);}
+.ͼ3 .cm-button {background-image: linear-gradient(#393939, #111); border: 1px solid #888;}
+.ͼ1 .cm-textfield {vertical-align: middle; color: inherit; font-size: 70%; border: 1px solid silver; padding: .2em .5em;}
+.ͼ2 .cm-textfield {background-color: white;}
+.ͼ3 .cm-textfield {border: 1px solid #555; background-color: inherit;}
+.ͼ1 .cm-diagnostic {padding: 3px 6px 3px 8px; margin-left: -1px; display: block; white-space: pre-wrap;}
+.ͼ1 .cm-diagnostic-error {border-left: 5px solid #d11;}
+.ͼ1 .cm-diagnostic-warning {border-left: 5px solid orange;}
+.ͼ1 .cm-diagnostic-info {border-left: 5px solid #999;}
+.ͼ1 .cm-diagnosticAction {font: inherit; border: none; padding: 2px 4px; background-color: #444; color: white; border-radius: 3px; margin-left: 8px;}
+.ͼ1 .cm-diagnosticSource {font-size: 70%; opacity: 0.7;}
+.ͼ1 .cm-lintRange {background-position: left bottom; background-repeat: repeat-x; padding-bottom: 0.7px;}
+.ͼ1 .cm-lintRange-error {background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="3">%3Cpath%20d%3D%22m0%202.5%20l2%20-1.5%20l1%200%20l2%201.5%20l1%200%22%20stroke%3D%22%23d11%22%20fill%3D%22none%22%20stroke-width%3D%22.7%22%2F%3E</svg>');}
+.ͼ1 .cm-lintRange-warning {background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="3">%3Cpath%20d%3D%22m0%202.5%20l2%20-1.5%20l1%200%20l2%201.5%20l1%200%22%20stroke%3D%22orange%22%20fill%3D%22none%22%20stroke-width%3D%22.7%22%2F%3E</svg>');}
+.ͼ1 .cm-lintRange-info {background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="3">%3Cpath%20d%3D%22m0%202.5%20l2%20-1.5%20l1%200%20l2%201.5%20l1%200%22%20stroke%3D%22%23999%22%20fill%3D%22none%22%20stroke-width%3D%22.7%22%2F%3E</svg>');}
+.ͼ1 .cm-lintRange-active {background-color: #ffdd9980;}
+.ͼ1 .cm-tooltip-lint {padding: 0; margin: 0;}
+.ͼ1 .cm-lintPoint:after {content: ""; position: absolute; bottom: 0; left: -2px; border-left: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 4px solid #d11;}
+.ͼ1 .cm-lintPoint {position: relative;}
+.ͼ1 .cm-lintPoint-warning:after {border-bottom-color: orange;}
+.ͼ1 .cm-lintPoint-info:after {border-bottom-color: #999;}
+.ͼ1 .cm-panel.cm-panel-lint ul [aria-selected] u {text-decoration: underline;}
+.ͼ1 .cm-panel.cm-panel-lint ul [aria-selected] {background-color: #ddd;}
+.ͼ1 .cm-panel.cm-panel-lint ul:focus [aria-selected] {background: #bdf; background-color: Highlight; color: white; color: HighlightText;}
+.ͼ1 .cm-panel.cm-panel-lint ul u {text-decoration: none;}
+.ͼ1 .cm-panel.cm-panel-lint ul {max-height: 100px; overflow-y: auto; padding: 0; margin: 0;}
+.ͼ1 .cm-panel.cm-panel-lint [name=close] {position: absolute; top: 0; right: 2px; background: inherit; border: none; font: inherit; padding: 0; margin: 0;}
+.ͼ1 .cm-panel.cm-panel-lint {position: relative;}
+.ͼ1 .cm-gutter-lint .cm-gutterElement {padding: .2em;}
+.ͼ1 .cm-gutter-lint {width: 1.4em;}
+.ͼ1 .cm-lint-marker {width: 1em; height: 1em;}
+.ͼ1 .cm-lint-marker-info {content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">%3Cpath%20fill%3D%22%23aaf%22%20stroke%3D%22%2377e%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22round%22%20d%3D%22M5%205L35%205L35%2035L5%2035Z%22%2F%3E</svg>');}
+.ͼ1 .cm-lint-marker-warning {content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">%3Cpath%20fill%3D%22%23fe8%22%20stroke%3D%22%23fd7%22%20stroke-width%3D%226%22%20stroke-linejoin%3D%22round%22%20d%3D%22M20%206L37%2035L3%2035Z%22%2F%3E</svg>');}
+.ͼ1 .cm-lint-marker-error:before {content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%2215%22%20fill%3D%22%23f87%22%20stroke%3D%22%23f43%22%20stroke-width%3D%226%22%2F%3E</svg>');}
+.ͼ1.cm-focused .cm-matchingBracket {background-color: #328c8252;}
+.ͼ1.cm-focused .cm-nonmatchingBracket {background-color: #bb555544;}
+.ͼ1 .cm-selectionMatch {background-color: #99ff7780;}
+.ͼ1 .cm-searchMatch .cm-selectionMatch {background-color: transparent;}
+.ͼ1 .cm-tooltip.cm-tooltip-autocomplete > ul > li {overflow-x: hidden; text-overflow: ellipsis; cursor: pointer; padding: 1px 3px; line-height: 1.2;}
+.ͼ1 .cm-tooltip.cm-tooltip-autocomplete > ul {font-family: monospace; white-space: nowrap; overflow: hidden auto; max-width: 700px; max-width: min(700px, 95vw); min-width: 250px; max-height: 10em; list-style: none; margin: 0; padding: 0;}
+.ͼ2 .cm-tooltip-autocomplete ul li[aria-selected] {background: #17c; color: white;}
+.ͼ3 .cm-tooltip-autocomplete ul li[aria-selected] {background: #347; color: white;}
+.ͼ1 .cm-completionListIncompleteTop:before, .ͼ1 .cm-completionListIncompleteBottom:after {content: "···"; opacity: 0.5; display: block; text-align: center;}
+.ͼ1 .cm-tooltip.cm-completionInfo {position: absolute; padding: 3px 9px; width: max-content; max-width: 300px;}
+.ͼ1 .cm-completionInfo.cm-completionInfo-left {right: 100%;}
+.ͼ1 .cm-completionInfo.cm-completionInfo-right {left: 100%;}
+.ͼ2 .cm-snippetField {background-color: #00000022;}
+.ͼ3 .cm-snippetField {background-color: #ffffff22;}
+.ͼ1 .cm-snippetFieldPosition {vertical-align: text-top; width: 0; height: 1.15em; margin: 0 -0.7px -.7em; border-left: 1.4px dotted #888;}
+.ͼ1 .cm-completionMatchedText {text-decoration: underline;}
+.ͼ1 .cm-completionDetail {margin-left: 0.5em; font-style: italic;}
+.ͼ1 .cm-completionIcon {font-size: 90%; width: .8em; display: inline-block; text-align: center; padding-right: .6em; opacity: 0.6;}
+.ͼ1 .cm-completionIcon-function:after, .ͼ1 .cm-completionIcon-method:after {content: 'ƒ';}
+.ͼ1 .cm-completionIcon-class:after {content: '○';}
+.ͼ1 .cm-completionIcon-interface:after {content: '◌';}
+.ͼ1 .cm-completionIcon-variable:after {content: '𝑥';}
+.ͼ1 .cm-completionIcon-constant:after {content: '𝐶';}
+.ͼ1 .cm-completionIcon-type:after {content: '𝑡';}
+.ͼ1 .cm-completionIcon-enum:after {content: '∪';}
+.ͼ1 .cm-completionIcon-property:after {content: '□';}
+.ͼ1 .cm-completionIcon-keyword:after {content: '🔑︎';}
+.ͼ1 .cm-completionIcon-namespace:after {content: '▢';}
+.ͼ1 .cm-completionIcon-text:after {content: 'abc'; font-size: 50%; vertical-align: middle;}
+.ͼ1 .cm-tooltip {z-index: 100;}
+.ͼ2 .cm-tooltip {border: 1px solid #bbb; background-color: #f5f5f5;}
+.ͼ2 .cm-tooltip-section:not(:first-child) {border-top: 1px solid #bbb;}
+.ͼ3 .cm-tooltip {background-color: #333338; color: white;}
+.ͼ1 .cm-tooltip-arrow:before, .ͼ1 .cm-tooltip-arrow:after {content: ''; position: absolute; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent;}
+.ͼ1 .cm-tooltip-above .cm-tooltip-arrow:before {border-top: 7px solid #bbb;}
+.ͼ1 .cm-tooltip-above .cm-tooltip-arrow:after {border-top: 7px solid #f5f5f5; bottom: 1px;}
+.ͼ1 .cm-tooltip-above .cm-tooltip-arrow {bottom: -7px;}
+.ͼ1 .cm-tooltip-below .cm-tooltip-arrow:before {border-bottom: 7px solid #bbb;}
+.ͼ1 .cm-tooltip-below .cm-tooltip-arrow:after {border-bottom: 7px solid #f5f5f5; top: 1px;}
+.ͼ1 .cm-tooltip-below .cm-tooltip-arrow {top: -7px;}
+.ͼ1 .cm-tooltip-arrow {height: 7px; width: 14px; position: absolute; z-index: -1; overflow: hidden;}
+.ͼ3 .cm-tooltip .cm-tooltip-arrow:before {border-top-color: #333338; border-bottom-color: #333338;}
+.ͼ3 .cm-tooltip .cm-tooltip-arrow:after {border-top-color: transparent; border-bottom-color: transparent;}
+.ͼ1 .cm-foldPlaceholder {background-color: #eee; border: 1px solid #ddd; color: #888; border-radius: .2em; margin: 0 1px; padding: 0 1px; cursor: pointer;}
+.ͼ1 .cm-foldGutter span {padding: 0 1px; cursor: pointer;}
+.ͼ6 {border-radius: 4px; padding: 5px 0; box-shadow: 0 2px 4px rgba(50,50,93,.1);}
+.ͼ6.cm-focused.cm-editor {outline: none;}
+.ͼ3s {font-size: 14px;}
+.ͼ3q {font-size: 14px;}
+.ͼ3o {font-size: 14px;}
+.ͼ3m {font-size: 14px;}
+.ͼq {color: #7F0055; font-weight: bold;}
+.ͼr {color: #0000C0;}
+.ͼs {color: black;}
+.ͼt {color: #00f;}
+.ͼu {color: #164;}
+.ͼv {color: black;}
+.ͼw {color: #3F7F5F;}
+.ͼx {font-weight: bold;}
+.ͼy {font-style: italic;}
+.ͼz {text-decoration: line-through;}
+.ͼ10 {color: #7d8799; text-decoration: underline;}
+.ͼ11 {font-weight: bold; color: #e06c75;}
+.ͼ12 {color: #ae81ff;}
+.ͼ13 {color: #2A00FF;}
+.ͼ14 {color: #ffffff;}
+.ͼ3t {background-color: white;}
+.ͼ3t.cm-focused .cm-selectionBackground, .ͼ3t .cm-selectionBackground, .ͼ3t .cm-content ::selection {background-color: #NaNNaN00;}
+.ͼ3t .cm-activeLine {background-color: #NaNNaN04;}
+.ͼ3t .cm-activeLineGutter {background-color: #NaNNaN04;}
+.ͼ3t .cm-tooltip-autocomplete > ul > li[aria-selected] {background-color: #NaNNaN04;}
+.ͼ3t .cm-gutters {background-color: white; border: none;}
+.ͼ3r {background-color: #f6f9fc;}
+.ͼ3r.cm-focused .cm-selectionBackground, .ͼ3r .cm-selectionBackground, .ͼ3r .cm-content ::selection {background-color: #e2e5e8;}
+.ͼ3r .cm-activeLine {background-color: #eceff2;}
+.ͼ3r .cm-activeLineGutter {background-color: #eceff2;}
+.ͼ3r .cm-tooltip-autocomplete > ul > li[aria-selected] {background-color: #eceff2;}
+.ͼ3r .cm-gutters {background-color: #f6f9fc; border: none;}
+.ͼ3p {background-color: #f6f9fc;}
+.ͼ3p.cm-focused .cm-selectionBackground, .ͼ3p .cm-selectionBackground, .ͼ3p .cm-content ::selection {background-color: #e2e5e8;}
+.ͼ3p .cm-activeLine {background-color: #eceff2;}
+.ͼ3p .cm-activeLineGutter {background-color: #eceff2;}
+.ͼ3p .cm-tooltip-autocomplete > ul > li[aria-selected] {background-color: #eceff2;}
+.ͼ3p .cm-gutters {background-color: #f6f9fc; border: none;}
+.ͼ3n {background-color: #f6f9fc;}
+.ͼ3n.cm-focused .cm-selectionBackground, .ͼ3n .cm-selectionBackground, .ͼ3n .cm-content ::selection {background-color: #e2e5e8;}
+.ͼ3n .cm-activeLine {background-color: #eceff2;}
+.ͼ3n .cm-activeLineGutter {background-color: #eceff2;}
+.ͼ3n .cm-tooltip-autocomplete > ul > li[aria-selected] {background-color: #eceff2;}
+.ͼ3n .cm-gutters {background-color: #f6f9fc; border: none;}
+.ͼ5 {height: 100%;}
+.ͼ5 .cm-line span {font-family: monospace !important;}
+.ͼ4 .cm-line ::selection {background-color: transparent !important;}
+.ͼ4 .cm-line::selection {background-color: transparent !important;}
+.ͼ4 .cm-line {caret-color: transparent !important;}
+</style><title>Largest Range | AlgoExpert</title><meta name="description" content="Practice with AlgoExpert&#39;s curated list of 160 coding interview questions spanning 15 categories and 4 difficulty levels."><link rel="canonical" href="https://www.algoexpert.io/questions/largest-range"><link rel="shortcut icon" type="image/png" href="https://assets.algoexpert.io/static/images/main-favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta property="og:title" content="AlgoExpert | Ace the Coding Interviews"><meta property="og:description" content="The leading platform to prepare for coding interviews. Master essential algorithms and data structures, and land your dream job with AlgoExpert."><meta property="og:image" content="https://assets.algoexpert.io/static/images/ae-social-logo.png"><meta property="og:url" content="https://www.algoexpert.io"><meta name="twitter:title" content="AlgoExpert | Ace the Coding Interviews"><meta name="twitter:description" content="The leading platform to prepare for coding interviews. Master essential algorithms and data structures, and land your dream job with AlgoExpert."><meta name="twitter:image" content="https://assets.algoexpert.io/static/images/ae-social-logo-twitter.png"><meta name="twitter:card" content="summary"><meta name="DEFAULT_TOKEN" content="eyJhbGciOiJIUzI1NiIsImtpZCI6IjdjYmM2ZWRhNzk1ZGM1YzMxZjJmOTk2Yzg0ODRkZTRiMGIxOTgwMmVmOTYwOWE3YzJmNDFmM2E0OTVhYjZmN2MiLCJ0eXAiOiJKV1QifQ.eyJTZXNzaW9uSUQiOiJhMGQ2NWI4Ni05NzZhLTRkZTgtYjU1Zi1hMDAxYzU3YTk3MjQiLCJNZXRhZGF0YSI6eyJwYXJ0aXRpb24iOiJtYWluIiwib2F1dGhfcHJvdmlkZXIiOiJkZWZhdWx0Iiwib2F1dGhfdXNlcl9pZCI6IjE4MWE1MDJmLWFlODUtNGI4OS05NWZjLTU0NTFiNzE3MGYwNiIsImVtYWlsIjoiIiwidXNlcm5hbWUiOiIiLCJuYW1lIjoiIiwiYXZhdGFyX3VybCI6IiIsInJlZ2lvbiI6IkVHIiwicm9sZXMiOiJ1c2VyIn0sIkdlbmVyaWNNZXRhIjp7fSwiZXhwIjo0ODE4MDA3NTc4LCJqdGkiOiJjNmI2MDJhYi1mMDFjLTRmMzUtYTgzNS05YTRmMDEwNzgzZjQiLCJpYXQiOjE2NjQ0MDc1NzgsImlzcyI6ImFsZ29leHBlcnQiLCJzdWIiOiJkZWZhdWx0fDE4MWE1MDJmLWFlODUtNGI4OS05NWZjLTU0NTFiNzE3MGYwNiJ9.hN-vmxbdUmmCK1gfsQHmggNZEOGoFmtfooan3JbuIXo"><link rel="preconnect" href="https://player.vimeo.com/"><link rel="preconnect" href="https://vimeo.com/"><link rel="preconnect" href="https://i.vimeocdn.com/"><link rel="preconnect" href="https://fresnel.vimeocdn.com/"><link rel="preconnect" href="https://assets.algoexpert.io/"><style>/* open-sans-regular - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('https://assets.algoexpert.io/static/fonts/open-sans-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/open-sans-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* open-sans-700 - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+       url('https://assets.algoexpert.io/static/fonts/open-sans-v17-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/open-sans-v17-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* lato-regular - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lato Regular'), local('Lato-Regular'),
+       url('https://assets.algoexpert.io/static/fonts/lato-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/lato-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lato-700 - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lato Bold'), local('Lato-Bold'),
+       url('https://assets.algoexpert.io/static/fonts/lato-v16-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/lato-v16-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* source-code-pro-regular - latin */
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Source Code Pro Regular'), local('SourceCodePro-Regular'),
+       url('https://assets.algoexpert.io/static/fonts/source-code-pro-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/source-code-pro-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* source-code-pro-700 - latin */
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'),
+       url('https://assets.algoexpert.io/static/fonts/source-code-pro-v11-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/source-code-pro-v11-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* ubuntu-regular - latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Ubuntu Regular'), local('Ubuntu-Regular'),
+       url('https://assets.algoexpert.io/static/fonts/ubuntu-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/ubuntu-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* ubuntu-700 - latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'),
+       url('https://assets.algoexpert.io/static/fonts/ubuntu-v14-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/ubuntu-v14-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* jura-regular - latin */
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('https://assets.algoexpert.io/static/fonts/jura-v13-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/jura-v13-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* jura-700 - latin */
+@font-face {
+  font-family: 'Jura';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local(''),
+       url('https://assets.algoexpert.io/static/fonts/jura-v13-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('https://assets.algoexpert.io/static/fonts/jura-v13-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}</style><script async="" src="./Largest Range _ AlgoExpert_files/gtm.js"></script><script>// See documentation 1) for details.
+      if (!window.location.href.includes('auth-complete')) {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=pGrmsLKCCIHvNpHum0P92w&gtm_preview=env-2&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','aeDataLayer','GTM-PZK5NHK');
+      }</script><script>window.onerror = function(message, source, lineno, colno, error) {
+      document.getElementById("unsupported-fallback").style.display = "block";
+    };</script><script defer="defer" src="./Largest Range _ AlgoExpert_files/d5bb7df967193eaaddd9.js"></script><script defer="defer" src="./Largest Range _ AlgoExpert_files/e694776bb950e84c76d1.js"></script><link href="./Largest Range _ AlgoExpert_files/f6f905b013fc31e75df8.css" rel="stylesheet"><style></style><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/94b0dbc1c7b4ea5043d7.css"><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/e9f9d6b770e3da377272.css"><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/9f34fe4cd6a3ae84b9a5.css"><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/8dcabcd1b3505f0c8b04.css"><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/bc3de45b164d5f1a23a9.css"><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/9eaf1c9ff842c3cdc542.css"><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/0155bc2cdad7e5d9e184.css"><link rel="stylesheet" type="text/css" href="./Largest Range _ AlgoExpert_files/519dccba65fa037c7d1f.css"><style data-react-tooltip="true">.__react_component_tooltip {
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 13px;
+  left: -999em;
+  opacity: 0;
+  padding: 8px 21px;
+  position: fixed;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+  top: -999em;
+  visibility: hidden;
+  z-index: 999;
+}
+.__react_component_tooltip.allow_hover, .__react_component_tooltip.allow_click {
+  pointer-events: auto;
+}
+.__react_component_tooltip::before, .__react_component_tooltip::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.__react_component_tooltip.show {
+  opacity: 0.9;
+  margin-top: 0;
+  margin-left: 0;
+  visibility: visible;
+}
+.__react_component_tooltip.place-top::before {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  bottom: -8px;
+  left: 50%;
+  margin-left: -10px;
+}
+.__react_component_tooltip.place-bottom::before {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: -8px;
+  left: 50%;
+  margin-left: -10px;
+}
+.__react_component_tooltip.place-left::before {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  right: -8px;
+  top: 50%;
+  margin-top: -5px;
+}
+.__react_component_tooltip.place-right::before {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  left: -8px;
+  top: 50%;
+  margin-top: -5px;
+}
+.__react_component_tooltip .multi-line {
+  display: block;
+  padding: 2px 0;
+  text-align: center;
+}</style><link id="https://assets.algoexpert.io/static/prism-themes/ae-workspace-light/main.css" href="./Largest Range _ AlgoExpert_files/main.css" rel="stylesheet"><link id="https://assets.algoexpert.io/static/prism-themes/ae-workspace-light/line-numbers.css" href="./Largest Range _ AlgoExpert_files/line-numbers.css" rel="stylesheet"></head><body class="ae ae-light" data-new-gr-c-s-check-loaded="14.1022.0" data-gr-ext-installed="" cz-shortcut-listen="true" data-new-gr-c-s-loaded="14.1022.0"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZK5NHK&gtm_auth=pGrmsLKCCIHvNpHum0P92w&gtm_preview=env-2&gtm_cookies_win=x" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="unsupported-fallback" style="background-color: #02203c;
+        color: white;
+        font-size: 30px;
+        padding: 0 20px;
+        height: 100vh;
+        line-height: 100vh;
+        text-align: center;
+        display: none;">Unsupported browser. Please try updating your browser.</div><div id="root"><div class="WZBWH_5sUz9uH60_BL_z"><div><div class="announcementsContainer" style="transition: transform 1000ms ease 0s; transform: translateX(-310px);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.88 22.88" fill="currentColor" xml:space="preserve" class="announcementsContainerCross" alt="close announcement cross" aria-label="Close"><path d="M.324 1.909a1.14 1.14 0 0 1 0-1.587 1.14 1.14 0 0 1 1.587 0l9.523 9.539L20.973.322a1.12 1.12 0 0 1 1.571 0 1.112 1.112 0 0 1 0 1.587l-9.523 9.524 9.523 9.539a1.112 1.112 0 0 1 0 1.587 1.12 1.12 0 0 1-1.571 0l-9.539-9.539-9.523 9.539a1.14 1.14 0 0 1-1.587 0c-.429-.444-.429-1.159 0-1.587l9.523-9.539L.324 1.909z"></path></svg><div class="announcementMessagesContainer"></div></div></div><div class="upL1UyraV12QgsUgl4fB oKFDEmU5eIbI0Pf6T94z"> </div><div class="xB5CAvrBegAJf9YdBZ8y tSYO82cZsHDWPZk1061Q u-hidden"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="mjkrXz7BU_6BeIbyribe UGFBXz8GPxwPMiWOnFYp"><path d="M456.828 0H338.355c-26.007 0-60.789 14.406-79.175 32.797L16.11 275.863C5.718 286.25 0 300.102 0 314.871c0 14.77 5.723 28.621 16.11 39.008L158.116 495.89C168.504 506.277 182.36 512 197.125 512c14.77 0 28.621-5.723 39.012-16.11l243.066-243.07C497.593 234.434 512 199.652 512 173.645V55.165C511.996 24.745 487.246 0 456.828 0zm-28.754 106c-2.789 2.8-6.66 4.398-10.61 4.398a15.07 15.07 0 0 1-10.6-4.398 15.054 15.054 0 0 1-4.4-10.602c0-3.953 1.602-7.82 4.4-10.609 2.78-2.789 6.652-4.39 10.6-4.39 3.95 0 7.821 1.601 10.61 4.39 2.79 2.79 4.39 6.66 4.39 10.61 0 3.949-1.6 7.812-4.39 10.601zm0 0" fill="#ff4949"></path><path d="M428.074 84.79c2.79 2.788 4.39 6.66 4.39 10.608 0 3.95-1.6 7.813-4.39 10.602-2.789 2.8-6.66 4.398-10.61 4.398a15.07 15.07 0 0 1-10.6-4.398L87.553 425.324l70.563 70.567c10.387 10.386 24.242 16.105 39.008 16.109 14.77 0 28.621-5.723 39.012-16.113L479.203 252.82C497.593 234.43 512 199.652 512 173.645V55.165c-.004-14.99-6.023-28.595-15.758-38.548zm0 0" fill="#ff2323"></path><g fill="#fef4f5"><path d="M139.309 331.492c-5.454-5.449-4.09-13.402 4.086-21.586 9.546-9.543 16.476-7.84 20-11.36 4.09-4.089.68-11.136-1.934-13.745-7.5-7.5-23.973 5.793-30.676 12.496-13.066 13.066-21.812 33.402-4.887 50.332 26.926 26.926 58.172-14.77 75.215 2.273 6.817 6.817 3.977 15.79-2.843 22.61-11.586 11.586-23.403 5.906-28.063 10.562-3.52 3.524-1.703 11.25 1.477 14.434 6.59 6.59 25.453 2.726 40.336-12.16 15.68-15.676 18.632-35.45 2.386-51.696-29.426-29.425-61.011 11.934-75.097-2.16zM298.137 282.645l-93.395-49.536c-4.43-2.386-10.222.227-14.539 4.547-4.203 4.2-6.82 9.996-4.433 14.43l49.535 93.39c.34.567.683 1.133.91 1.364 3.637 3.633 11.476.793 15.45-3.184 2.5-2.496 3.64-5.226 2.05-7.953l-10.797-19.426 26.02-26.02 19.425 10.798c2.73 1.586 5.453.453 7.953-2.047 3.977-3.977 6.704-11.934 3.18-15.453-.336-.34-.793-.57-1.36-.91zm-63.739 18.976-24.996-44.77 44.766 25zM343.008 226.41l-27.723 27.723-65.555-65.559c-3.183-3.18-8.292-.793-11.93 2.84-3.75 3.75-6.023 8.75-2.843 11.934l73.852 73.851c3.066 3.067 7.84 1.477 11.136-1.82l36.016-36.016c2.953-2.953 1.133-7.726-2.047-10.906-3.293-3.297-7.95-5.004-10.906-2.047zM413.676 168.926c-3.524-3.524-8.297-4.887-11.25-1.934l-32.153 32.153-22.836-22.836 17.27-17.27c3.18-3.18 1.59-7.726-1.023-10.34-3.067-3.066-7.614-4.199-10.567-1.246l-17.27 17.266-22.722-22.723 32.152-32.148c2.953-2.957 1.59-7.727-1.93-11.25-3.07-3.067-7.84-4.887-11.023-1.707L291.88 137.34c-3.297 3.293-4.887 8.066-1.817 11.133l73.735 73.734c3.07 3.07 7.84 1.48 11.137-1.816l40.445-40.446c3.18-3.18 1.363-7.953-1.703-11.02zm0 0"></path></g><path d="M201.113 349.902c6.817 6.817 3.977 15.79-2.84 22.61-11.59 11.586-23.406 5.906-28.062 10.562-3.524 3.524-1.703 11.25 1.476 14.434 6.59 6.59 25.45 2.726 40.333-12.16 15.68-15.676 18.632-35.45 2.386-51.696-8.09-8.09-16.344-10.82-24.351-10.836l-32.817 32.82c17.149-4.19 33.266-16.343 43.875-5.734zM254.164 281.852l-19.766 19.77-8.293-14.856-14.335 14.336 23.535 44.375c.34.566.683 1.132.91 1.363 3.637 3.633 11.476.793 15.45-3.184 2.5-2.496 3.64-5.226 2.05-7.953l-10.797-19.43 26.02-26.015 19.425 10.793c2.73 1.59 5.453.457 7.953-2.047 3.977-3.977 6.704-11.93 3.18-15.45-.34-.34-.793-.57-1.36-.91l-44.374-23.539-14.45 14.45zM308.813 277.195c3.066 3.07 7.84 1.48 11.132-1.816l36.016-36.02c2.953-2.949 1.137-7.722-2.043-10.902-3.297-3.297-7.953-5.004-10.91-2.047l-27.723 27.723-28.273-28.274-14.77 14.77zM402.426 166.992l-32.153 32.153-22.836-22.836 17.27-17.27c3.082-3.086 1.68-7.445-.793-10.09l-36.687 36.688 36.57 36.57c3.066 3.07 7.84 1.48 11.137-1.816l40.441-40.446c3.184-3.18 1.363-7.953-1.7-11.02-3.523-3.523-8.296-4.886-11.25-1.933zm0 0" fill="#d5eded"></path></svg><div><div class="sSaiyL92cT59xAVHMBR0">FLASH SALE</div><div class="wREcLzwFHWa5Snnotk1x qa8FwBuxeyTwc8Ett5y8 RsljZUHNOoGPLCnCLskT"><div class="C_NflMhqofHrvGVBCDsb"><span class="wBPN9xa2cvHBmbLcinBa">0</span><span>days</span></div><div class="C_NflMhqofHrvGVBCDsb"><span class="wBPN9xa2cvHBmbLcinBa">7</span><span>hours</span></div><div class="C_NflMhqofHrvGVBCDsb"><span class="wBPN9xa2cvHBmbLcinBa">32</span><span>mins</span></div><div class="C_NflMhqofHrvGVBCDsb"><span class="wBPN9xa2cvHBmbLcinBa">16</span><span>secs</span></div></div></div><div class="GvxSknD49BfQ0af6gXHI"></div><div class="BZuBKMvdaz3tCL9d0Evj">25% OFF</div><div class="OF5rl7JU0parwHfPpRdk"></div><a class="vrIDGx3up7DqpXpA84wR knHZ8G2x6hReZfE2oVNl" href="https://www.algoexpert.io/purchase">BUY NOW</a><button class="zTluFx07ke4fCrK5buVt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.88 22.88" fill="currentColor" xml:space="preserve" class="mkN8kk0fVooHnIoa9jj0"><path d="M.324 1.909a1.14 1.14 0 0 1 0-1.587 1.14 1.14 0 0 1 1.587 0l9.523 9.539L20.973.322a1.12 1.12 0 0 1 1.571 0 1.112 1.112 0 0 1 0 1.587l-9.523 9.524 9.523 9.539a1.112 1.112 0 0 1 0 1.587 1.12 1.12 0 0 1-1.571 0l-9.539-9.539-9.523 9.539a1.14 1.14 0 0 1-1.587 0c-.429-.444-.429-1.159 0-1.587l9.523-9.539L.324 1.909z" stroke="currentColor" stroke-width="2"></path></svg></button></div><div class="IioW5mVg5oGItSyqMLQ3 fgi6NqUJN8T5fS9kVxPa"><div class="__react_component_tooltip t7de50694-08ee-4565-a2cd-7d527af9b689 place-left type-custom Tooltip Tooltip__bold" id="t7de50694-08ee-4565-a2cd-7d527af9b689" data-id="tooltip" style="left: 1701px; top: 54px;"><style aria-hidden="true">
+  	.t7de50694-08ee-4565-a2cd-7d527af9b689 {
+	    color: #02203c;
+	    background: white;
+	    border: 1px solid transparent;
+  	}
+
+  	.t7de50694-08ee-4565-a2cd-7d527af9b689.place-top {
+        margin-top: -10px;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: white;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-bottom {
+        margin-top: 10px;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-left {
+        margin-left: -10px;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: white;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-right {
+        margin-left: 10px;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t7de50694-08ee-4565-a2cd-7d527af9b689.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: white;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  </style>More Info</div><div class="__react_component_tooltip t9a8b0071-ec3c-4875-940a-8ac2bfbfce75 place-left type-dark" id="left-tooltip" data-id="tooltip"><style aria-hidden="true">
+  	.t9a8b0071-ec3c-4875-940a-8ac2bfbfce75 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-top {
+        margin-top: -10px;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-bottom {
+        margin-top: 10px;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-left {
+        margin-left: -10px;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-right {
+        margin-left: 10px;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t9a8b0071-ec3c-4875-940a-8ac2bfbfce75.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  </style></div><div class="Fey1KjgRlNxivW3HJm2R "><a class="QVaevC_MwXbaVE8oWCYt " href="https://www.algoexpert.io/product"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABuCAYAAADRebYyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAzySURBVHhe5Z2Pldy2EYd9qcAluAR3YKUCOx24BHfgElyCXypwUoGVCuRU4HSgdCB/3x55t7vHGQxIkFzZv/eg3SUHMwMM5g9ASnr6YgGfPn16x8e3ND+/9tod/k97T/uN9h8/n56evPaXBXP2JR/O11e0b6bvXruHc2b7J3PmHMaA6de0n2m9+Ej7lfbDxOovA8b8/TT232m9sN+S0V6M8UGqAdCoS571pwBjezeN0YW4FRpSr3qFF2gjmN/DFfDdJOazBuP4kqYhXLSj5+rWKPz46XJ5P2iY7ydxnx3QXUM4hj3x8yys4h3en9sWfDYeg57XHrEF1bnz/lcK/uHycxm/0G5ygb9p39F+pK1dNW/4PhLUbdJxDZwTI47GvJ87r2V8f5AomlSvL1cAV4BGD5srjV5o1KaMo6AuNCezJxJI69hd2KWxQBcZ5VdvRsK7Qwt91pTNyj89jKGDi6q3dNV43Z5OHz1lEd5cwnM8Wwn70lz9PSut5JGjgUx17QlPGk1DbJkfPXERkUF+n/puBrx6KrhDvQVZekXPohkWYuGz6I27G0TAz1XYY5hdvUXetB6vMAyv9oglwO88g8yAb08ZqcLDKzF4WiFWc4ULYxePhW+XQT5O/XYB/LNS+x4/Tt02AT56RTWvSTNE7hLgrS5dBhG77hPg35NM9aotSdTqr1qWSzc0PN0D/uqzCG9GIeSQ5IqcamKVxiPtLtiHVglR0hxyvIMcw+YSLvuQaOUcdpSOrB5vKYUS6HpC1O5ecQ1kRSH7YpD45sFAZnUCrXrCKox7GriyQVWWHnro/gd5sRPwR7xrPAGINb5WKjFDzJtV7TVapb+Tcsp5GnKjRffOm7p2RHCWwtV9gnq/6Mj36vHH8H1FFciN8odjedaJL5EL/XQhOAnId4JbcCAO0hYtrBneP/W5DPKjDfJriuCHsXsJu2wQe4AOhqDWRFeg55zi8deY9FjC6+LnR1gXg0c4idUokRdXYPg7JURdAx2icCVeS3p+hDtHcGrYuga6rDGKxjj8FHkJ6BGFqw8TySu4GBHveozSC/Q5/NhlBNAlW/TPz9OvwcWHDlsz0KUavix9H8IzBLpk4Wo5t3Ejqt8P3yQuAT1cNJWydsZDJHKBHtEiiueWm1G1JU4dGPLXVlv2OdVTkO/mO9I9DqvczDaJb+PcQUC2xujxjHs4ptMWFLKjY5y2XhCEyZ12+EpDZsUYhoPWcYk8Di99lTnJXkJ7kUMUnm2BQ6sW5FWM8XLQyGfruMVFdahRkJelgdrjBAijBHSYlyBHY7RW/c0K43flDOwwT0FOlgJ+mcjagDgrgXf3EmQoPxrIjPAInuutsvgQoyBju3cIiLVstDp39RJ4VzwjXV3cV/9TjSJvWrSolN03h3TIdsS7HKfAtytntADdaYkevpl3rHsaS8csbAwdCPwqq7psjBnQt3LK23OkjYBnFnLXn6DTOXseUU9KDcBLY0S1+gyNtSpUTn0zDBuLgF82lm3PY2CQDWbzZgseGqO1irs94x70b8kYcjwEn2xXrg6bxqGArOLa/AALHq1XTFd7xj3g0zT8RLoa8MjyVvdrTIuAUeYlq0+C6ds6Sh9mjBnwayX61SGFvtl4xoVFmFn9RFj1vIR+Kp8VDVZAw8+f4Fmp5LqNQh9Db8TXcY4dCwyz0NK1WYS+9TbhbuWokPckI0L3BEKfzc/4bQJMXQHZii7FR+hau3Anarhn3AMZw4wi3aXHMpQxNOy+AMZZjGwmeGichFZiPezpJLKyg1Rhvkkn0/u0LMfue9SEgNXCuZ8ZwxVZNga0Gtd9kiWxfK+bu+TSqoSuZZTWMU22Ix+6v1kEQpyICE7qYuznequ8La0k6JQvryzszdA4zVwETTapYjEHcL0VfseUuS0gKBvAmw0W11pvIJaSHnS+KNAqW5fQnBhoWicFbyovrmXR4tjXpxCYJcSXwzO+t1ZRM04LaLIdcAVpKct9c0HL2C9Jnu9ZPi2NaSgQmL3W4sRpiFYlo+KVkNLiU8FFp4nlIrjfMsqlYqJlVZU457UpBBujI+jOWRhoTtAM6Fr5p4rmyS40WY4Uc+EQYfO52yYgfG0YKa0i6FoT5Io2R7lqDSNZXBeVfJJ5fwbn4jxjCBRoTdgSyrU5tFmsXixvuZZNaOkAEbperyx7/O5AkR7lu1wa2mjFt/YHUVgpn71B2/K2a+y7AewFClWS7iUpTl1KgD5Ksq2qKUq8PQYxgZfGNXV5HKBUJXR1uzR9IoM0DQvNUn7rOp2GvlVRKWPYBvBv0+cIWL5m/1Ss90YmvLRcZpKa5fSfGkxAVr/PGBmyWudm0elAr4dUqsjHClko1JPUu55dQx/tZZyoRS/wOi2K/SX50Jk/sv3GPY49KomAImuONHrK3uw01km/PqZxEqXPvLX0TpR0z+RdOLfsRYFqFbKEciKEtiLDErVF5/1KMdA6DI2w6nH2ECC85dJOUHa/XJ1Id+mxHU3vgMaqKvN4x5SNa/9nIEtAcOt4wTiu0bLw4b1Skodu63lWc4cOjfpmm0H1dVy2zGir31xZBQS2Jvo6rrf2J+UKBdrWM4sITnJqeO/TsjFpgJccwfdNj7OHAoGnPKAS0DoR1SJCuuqTyJaxlx5QZQY85igFQVk8v1lF1+B6q2opVT8CWlez/KIJMXm7aEqbw4k2w+Lkcr3l/ftXXQjJElo6qdxvHdZ1P9ihzxzTX9p0qwTo9d7M41qHmJn3D3+z/gYIyFZ5NU5nRnFijnwNqFWYjBhT2fO7AfOszq+WsK7ibEUqY/dzKGS0ylv1qI4pO4BURqmS7AJMs7KzK4FB39pX7GoUeDuBrYqq6wQX+iwPbX6r/gYwzFbTqhVAn1a42MUo8qRlnuG97jBDH0NXNkfjEjzMspJwdYy07zOLEEOTIvxa8V6sLlfpmyX4MTt4GGXxcfOEwaNV/w8ZCHw0RkvW3n9hZ7uXwCRaUcPcED5ZKS02/XUz+muMlgyNtTn5wsOQGGHTOGSe7YqHJir47WIU+lWM4f1hlRC8Mk9cX9bTOXI/jdRVhVQAz8zdRVf4gv5wYwj4ZYXDunMuOmYJapenY/B1INleR4x84qesXY434JttE/pOg+ngYLKJGb/RmQDvilEqr4S2ErjeuOc4nMPIS/oeZNEh27jtfoqJjNWewvVTPeMayMg2i/WQD3E0IAey+7GGUM4kL8Mbo3Ct5RlHjiHzklqRAmG2gz70zQrklY3CZ8UzDFO7e8Y1kLfNSyCKkpGW3i3mRkCmRolW2Qz3Sq0d+GGecQ1kZl6SL3AIsjOr0947QnbFUzKcYowZyM7CaLzIuRmdLWmkQ139HsiveMoSTjWGUP5Fk2XEZ4HcjNy+loB2Bnro/j2ecroxZqBHNLfLJTw3skPEY19rSYAurrZWvhAm8IcwhkCXbKP9Nvpw8aGSeQR06Xk/a7/HpyuAPvX8zMXoHOm0ZH4N9DBctfYYSzjnTcIFoEu0mG7Pt7iQ7cyHHyL2Ah0Mp609RoaHCF/okKWFV/34UbPcCUAHB7Gl5J3xEAkeHdJINP8Nqqik/df0eQpQ0hxghZdNpH8z6x+0v19+xZCHRjk7r7yfPu/xHIlQMNt0nfIvEiBXnVpvEwr1ftGR74beyl5l7FsgHUB2lB6eiyf+CAkmHocCuYaoyK2vIc2b6o9r2QK7hv1P2ew+i1/E5T+WjHbnh28GkZk9Mr6G1VYYxrhXOWiccXgIQ2a0j7r816vxzYOALFe1k9wyhvc1WmlfNNFWoOzD9lrIip2AP6LwcEj+QI7KVUKMxuguwe0z9a3gkBMJ5ESPOD54M8Ku8RX+ekU1rOjFq0tW+048KlCnXb0F/uF+JDKIK3Y3peBtBVX1CmmH7B/g8zDHLvBf9NrQIFO/oYCvrlpdqTcl7SjA0xBWWQzCcL7LSQV8F3U4xCDw00UrSXvGrklW3rTqwhCGsSFeOgN+xxsEPg68ssGbocGOrO5ab+DfY9hBK7y6DOLEbEmiekQ1T8zYlLjXQpmT7Cock7lotQfTV5ldOUR0x2/6aIiexCkc4ClHNNdAh57yeEa6QY1An8gzP3ozWh2l5wjQGZZ8GiafngFJu2pAewFdHEvvghLmmNKGVRqa417CZWOY7Wad5Jsqg996gatJxXtc/RoO4NSXJjKo26TjGjgnhmu94GaM/p7uR7gcnWixFlzNc9sCy0gV3XXjNQqTrmsX3Yzq3Hn/OVrwZY2b9uCNp31OQPc5JO+J1wqOH2b9noqoCgfx2XhEC9NY9jCMc38bwrkwyii6nknrYXPEVjA2c6hjbIWhCpzz5cLGG7Q1yUzF7Pcw728dBcdM02vWGMc5uzHG0/R5A4iM99/S3B8sWe9/tN+m9l/a+6enp+xfJP1LgHmb5+sbmnO4FKqdM5+r/5s5u3u+/sUXfwCz1+/2eB3ggwAAAABJRU5ErkJggg==" class="iHipONBBC33053gkorKR"><span class="ExnblpMTEZt0_FDGEe6G">AlgoExpert</span></a><a class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      RvzHuW5WiZ6xMtWPE8qG
+    " href="https://www.algoexpert.io/questions" data-tip="Questions List" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" xml:space="preserve" class="Q71nYznWIzfi7gE20ZP8"><path d="M492 236H144.262c-11.046 0-20 8.954-20 20s8.954 20 20 20H492c11.046 0 20-8.954 20-20s-8.954-20-20-20zM492 86H144.262c-11.046 0-20 8.954-20 20s8.954 20 20 20H492c11.046 0 20-8.954 20-20s-8.954-20-20-20zM492 386H144.262c-11.046 0-20 8.954-20 20s8.954 20 20 20H492c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path><circle cx="27" cy="106" r="27"></circle><circle cx="27" cy="256" r="27"></circle><circle cx="27" cy="406" r="27"></circle></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></a><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      RvzHuW5WiZ6xMtWPE8qG
+    " type="button" data-tip="Next Question" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 268.832 268.832" xml:space="preserve" class="Q71nYznWIzfi7gE20ZP8"><path d="m265.171 125.577-80-80c-4.881-4.881-12.797-4.881-17.678 0-4.882 4.882-4.882 12.796 0 17.678l58.661 58.661H12.5c-6.903 0-12.5 5.597-12.5 12.5 0 6.902 5.597 12.5 12.5 12.5h213.654l-58.659 58.661c-4.882 4.882-4.882 12.796 0 17.678 2.44 2.439 5.64 3.661 8.839 3.661s6.398-1.222 8.839-3.661l79.998-80c4.882-4.882 4.882-12.796 0-17.678z"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><div class="nIOa2GpPkzSt8t4ZFV_K vV6hdVy3EfU3dG8mtzyR"><button class="
+    MrtifISZdM8XIytdb22s 
+    Vh0v4u5vCIQ0zqUGdV7w 
+    
+    
+    AAfJBPetXwgBZ1IPRSFH
+  " data-tip="Programming Language" data-tip-disable="false" type="button" tabindex="0" currentitem="false"><span class="oWoHqZGV1RWlIC1vbJQA">JavaScript </span><div class="u-flexSpacer"></div><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" xml:space="preserve" class="yRfHP0TDVITiDuhFO1M8 undefined "><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z"></path></svg></button><ul class="AB2APtmBPMcyfX5cfdS5  rcXInY2XKef7uVIGuunB " tabindex="-1" role="listbox" aria-expanded="false"><li role="option" tabindex="-1" data-index="0" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">C# </li><li role="option" tabindex="-1" data-index="1" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">C++ </li><li role="option" tabindex="-1" data-index="2" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">Go </li><li role="option" tabindex="-1" data-index="3" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">Java </li><li role="option" tabindex="-1" data-index="4" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            x6RCE05ahMg6e_uNs7nP
+          ">JavaScript </li><li role="option" tabindex="-1" data-index="5" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">Kotlin </li><li role="option" tabindex="-1" data-index="6" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">Python </li><li role="option" tabindex="-1" data-index="7" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">Swift </li><li role="option" tabindex="-1" data-index="8" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">TypeScript </li></ul></div><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      RvzHuW5WiZ6xMtWPE8qG
+    " type="button" data-tip="Data Structure Visualizer" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.002 512.002" xml:space="preserve" fill="currentColor" class="Q71nYznWIzfi7gE20ZP8"><path d="M354.957 116.545c-6.044-10.441-9.507-22.568-9.507-35.509 0-39.213 31.784-70.997 70.997-70.997s70.997 31.784 70.997 70.997-31.784 70.997-70.997 70.997c-26.272.001-49.212-14.275-61.49-35.488zM354.957 395.455c12.278-21.213 35.218-35.489 61.49-35.489 39.213 0 70.997 31.784 70.997 70.997s-31.784 70.997-70.997 70.997-70.997-31.784-70.997-70.997c0-12.94 3.463-25.067 9.507-35.508zM158.098 222.379c5.391 10.009 8.453 21.454 8.453 33.621 0 39.213-31.784 70.997-70.997 70.997S24.556 295.213 24.556 256s31.784-70.997 70.997-70.997c27.046 0 50.558 15.119 62.545 37.376z"></path><path d="M416.447 0c-44.684 0-81.037 36.353-81.037 81.037a81.142 81.142 0 0 0 6.261 31.253l-40.115 21.566c-4.883 2.625-6.714 8.713-4.088 13.596a10.04 10.04 0 0 0 8.851 5.288 10 10 0 0 0 4.746-1.199l40.608-21.831c15.2 20.166 39.222 32.364 64.775 32.364 44.684 0 81.037-36.353 81.037-81.038C497.484 36.353 461.131 0 416.447 0zm0 141.995c-21.689 0-41.921-11.679-52.802-30.479-5.336-9.218-8.157-19.758-8.157-30.479.001-33.613 27.347-60.958 60.959-60.958s60.958 27.345 60.958 60.958-27.344 60.958-60.958 60.958zM416.447 349.927c-25.554 0-49.576 12.199-64.775 32.365l-180.558-97.061a80.583 80.583 0 0 0 5.477-29.23 81.387 81.387 0 0 0-5.449-29.235l83.299-44.783c4.883-2.625 6.714-8.713 4.088-13.596-2.624-4.883-8.713-6.715-13.596-4.088l-83.306 44.787a80.96 80.96 0 0 0-66.073-34.12c-44.684 0-81.037 36.353-81.037 81.037S50.87 337.04 95.554 337.04c27.215 0 51.32-13.499 66.024-34.137l180.095 96.811a81.146 81.146 0 0 0-6.261 31.253c0 44.684 36.353 81.037 81.038 81.037 44.684 0 81.037-36.353 81.037-81.037-.003-44.687-36.356-81.04-81.04-81.04zM95.554 316.958c-33.612 0-60.958-27.345-60.958-60.958s27.345-60.958 60.958-60.958c22.465 0 43.043 12.299 53.706 32.096 4.746 8.811 7.253 18.791 7.253 28.862-.001 33.612-27.347 60.958-60.959 60.958zm320.893 174.964c-33.612 0-60.959-27.345-60.959-60.958 0-10.722 2.821-21.262 8.158-30.48 10.881-18.8 31.113-30.478 52.801-30.478 33.612 0 60.958 27.346 60.958 60.959s-27.344 60.957-60.958 60.957zM279.091 147.242c-12.919 0-12.941 20.078 0 20.078 12.919.001 12.94-20.078 0-20.078z"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><div class="qzQCZlVgzB31QttOsycB"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      xq0Ug2DZZ9jywNmRfQsi
+    " type="button" data-tip="Timer | Stopwatch" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg fill="currentColor" viewBox="0 0 323.569 323.569" xmlns="http://www.w3.org/2000/svg" class="qtq2Ll1FybdlkUvTnLdy"><path d="M161.785 53.928c-74.459 0-134.821 60.361-134.821 134.821S87.325 323.57 161.785 323.57s134.821-60.361 134.821-134.821c-.085-74.424-60.397-134.736-134.821-134.821zm13.482 241.74v-12.545c0-7.446-6.036-13.482-13.482-13.482s-13.482 6.036-13.482 13.482v12.538c-48.792-6.221-87.21-44.638-93.431-93.431H67.41c7.446 0 13.482-6.036 13.482-13.482s-6.036-13.482-13.482-13.482H54.872c6.221-48.792 44.638-87.21 93.431-93.431v12.538c0 7.446 6.036 13.482 13.482 13.482s13.482-6.036 13.482-13.482V81.836c48.795 6.218 87.216 44.636 93.437 93.431h-12.545c-7.446 0-13.482 6.036-13.482 13.482s6.036 13.482 13.482 13.482h12.538c-6.217 48.795-44.636 87.216-93.43 93.437z"></path><path d="M175.267 183.166v-34.863c0-7.446-6.036-13.482-13.482-13.482s-13.482 6.036-13.482 13.482v40.446a13.487 13.487 0 0 0 3.95 9.532l26.964 26.964c5.356 5.173 13.891 5.024 19.064-.332 5.046-5.225 5.046-13.507 0-18.732zM134.821 26.964h53.928c7.446 0 13.482-6.036 13.482-13.482S196.195 0 188.749 0h-53.928c-7.446 0-13.482 6.036-13.482 13.482s6.036 13.482 13.482 13.482zM314.314 74.348 276.185 36.22c-5.331-5.198-13.867-5.09-19.065.241-5.105 5.236-5.105 13.588 0 18.824l38.129 38.129c5.198 5.331 13.734 5.439 19.065.241s5.439-13.734.241-19.065a10.994 10.994 0 0 0-.241-.242zM66.449 55.285c5.331-5.198 5.439-13.734.241-19.065s-13.734-5.439-19.065-.241c-.081.079-.162.16-.241.241L9.256 74.348c-5.331 5.198-5.44 13.734-.242 19.065s13.734 5.44 19.065.242c.082-.08.162-.16.242-.242z"></path></svg><div class="aU9i055QHn92ebpTIp2w">00:00:00</div></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><div class="kNy5zRaMSDmi19Qs73T9 "><button class="O7DfOA_x1FYQzRxRKaxZ" aria-label="Close" tabindex="-1"></button><div class="qhlf1kBIQtw8WcIcNBER "><div class="af5O30uWCIOannKtSxwP"><div class=""><div><div class="dpgd0nS3CNbo5HbOOVwI">00:00:00</div><form><label for="minutes" class="PZq9qZgRKfv1lGtvBUUl">Minutes</label><div class="dVkKhYcejDf6GbLaNjZ2  pHJ7YPfApLkeSwiXsfcA"><input id="minutes" class="UBrcE79fH8IvE8NVY_3Q WWjJ8WDy9Cogo7pGhjOn M0rzF3UsopqSZdlgRXES eXk9pcH27TbGz_9XDK9Z" type="number" maxlength="3" min="1" autocomplete="on" value="45"><div class="lmqP3TcecRNTm6dFhk8s mjC4_Nt4SnHQRqylQaMA"></div></div><div class="omz2AIBiP9PNNKytmVcd"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " type="submit" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 494.148 494.148" fill="currentColor" xml:space="preserve" class="AAPdBndqRPvxY9VO_bLw"><path d="M405.284 201.188 130.804 13.28C118.128 4.596 105.356 0 94.74 0 74.216 0 61.52 16.472 61.52 44.044v406.124c0 27.54 12.68 43.98 33.156 43.98 10.632 0 23.2-4.6 35.904-13.308l274.608-187.904c17.66-12.104 27.44-28.392 27.44-45.884.004-17.48-9.664-33.764-27.344-45.864z"></path></svg>Start</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><div class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      AXHUJ_ti2lv8mUOOMuqz
+      jdGKAOquPjS9lRCIFPaV
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " disabled="" type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="AAPdBndqRPvxY9VO_bLw"><path d="M256 106.668c-11.797 0-21.332 9.555-21.332 21.332v128c0 11.777 9.535 21.332 21.332 21.332h128c11.797 0 21.332-9.555 21.332-21.332s-9.535-21.332-21.332-21.332H277.332V128c0-11.777-9.535-21.332-21.332-21.332zm0 0"></path><path d="M256 0C188.16 0 122.453 27.094 73.645 72.34L27.309 26.027a15.98 15.98 0 0 0-17.43-3.476A16.01 16.01 0 0 0 0 37.332V176c0 8.832 7.168 16 16 16h138.668a15.987 15.987 0 0 0 14.781-9.879 15.972 15.972 0 0 0-3.476-17.43L104 102.7c40.852-37.418 95.445-60.031 152-60.031 117.633 0 213.332 95.7 213.332 213.332S373.632 469.332 256 469.332c-57.047 0-110.57-22.227-150.7-62.547-8.32-8.363-21.843-8.387-30.163-.066-8.364 8.32-8.407 21.824-.086 30.187C123.266 485.332 187.52 512 256 512c141.164 0 256-114.836 256-256S397.164 0 256 0zm0 0"></path></svg>Reset</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></div></div></form></div></div><div class="u-hidden"><div><div class="dpgd0nS3CNbo5HbOOVwI">00:00:00</div><div class="omz2AIBiP9PNNKytmVcd"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 494.148 494.148" fill="currentColor" xml:space="preserve" class="AAPdBndqRPvxY9VO_bLw"><path d="M405.284 201.188 130.804 13.28C118.128 4.596 105.356 0 94.74 0 74.216 0 61.52 16.472 61.52 44.044v406.124c0 27.54 12.68 43.98 33.156 43.98 10.632 0 23.2-4.6 35.904-13.308l274.608-187.904c17.66-12.104 27.44-28.392 27.44-45.884.004-17.48-9.664-33.764-27.344-45.864z"></path></svg>Start</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><div class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      AXHUJ_ti2lv8mUOOMuqz
+      jdGKAOquPjS9lRCIFPaV
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " disabled="" type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="AAPdBndqRPvxY9VO_bLw"><path d="M256 106.668c-11.797 0-21.332 9.555-21.332 21.332v128c0 11.777 9.535 21.332 21.332 21.332h128c11.797 0 21.332-9.555 21.332-21.332s-9.535-21.332-21.332-21.332H277.332V128c0-11.777-9.535-21.332-21.332-21.332zm0 0"></path><path d="M256 0C188.16 0 122.453 27.094 73.645 72.34L27.309 26.027a15.98 15.98 0 0 0-17.43-3.476A16.01 16.01 0 0 0 0 37.332V176c0 8.832 7.168 16 16 16h138.668a15.987 15.987 0 0 0 14.781-9.879 15.972 15.972 0 0 0-3.476-17.43L104 102.7c40.852-37.418 95.445-60.031 152-60.031 117.633 0 213.332 95.7 213.332 213.332S373.632 469.332 256 469.332c-57.047 0-110.57-22.227-150.7-62.547-8.32-8.363-21.843-8.387-30.163-.066-8.364 8.32-8.407 21.824-.086 30.187C123.266 485.332 187.52 512 256 512c141.164 0 256-114.836 256-256S397.164 0 256 0zm0 0"></path></svg>Reset</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></div></div></div></div></div><div class="VmcJ0_XJbROIveRMJUTn"><button class="t1wStxLOUu4DY4ZC7xEq SiLZXXWIFg0HNBg_YGDy">Timer</button><button class="t1wStxLOUu4DY4ZC7xEq ">Stopwatch</button></div></div></div></div><div class="u-flexSpacer"></div><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      RvzHuW5WiZ6xMtWPE8qG
+    " type="button" data-tip="Bug Report" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 98.023 98.023" xml:space="preserve" class="Q71nYznWIzfi7gE20ZP8"><path d="M49.011 8.689c-9.983 0-18.541 6.61-22.158 16.012h44.315C67.553 15.3 58.994 8.689 49.011 8.689z"></path><path d="M93.357 48.938H79.496a47.421 47.421 0 0 0 1.348-9.83c4.94-2.967 10.617-8.168 12.028-16.795a4.665 4.665 0 0 0-9.209-1.506c-.759 4.64-3.723 7.724-6.633 9.696H21.009c-2.915-1.974-5.892-5.058-6.65-9.696a4.664 4.664 0 0 0-5.357-3.851 4.665 4.665 0 0 0-3.852 5.357c1.411 8.626 7.087 13.828 12.028 16.795a47.354 47.354 0 0 0 1.348 9.83H4.665a4.666 4.666 0 0 0 0 9.332h17.322a39.081 39.081 0 0 0 4.602 7.083c-6.1 4.571-11.813 12.548-14.584 16.745a4.665 4.665 0 0 0 7.785 5.144c4.624-6.99 10.586-13.596 13.746-15.472 3.796 2.601 8.073 4.261 12.622 4.759V41.297h5.708v35.232c4.543-.498 8.813-2.153 12.608-4.748 3.195 1.89 9.146 8.483 13.76 15.461a4.665 4.665 0 0 0 7.784-5.144c-2.774-4.2-8.473-12.184-14.579-16.751a39.13 39.13 0 0 0 4.596-7.077h17.322a4.666 4.666 0 0 0 0-9.332z"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      RvzHuW5WiZ6xMtWPE8qG O6GxrmAc2DzN40iOUSFQ
+    " type="button" data-tip="Settings" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="Q71nYznWIzfi7gE20ZP8 undefined"><path d="M272.066 512h-32.133c-25.989 0-47.134-21.144-47.134-47.133v-10.871a206.698 206.698 0 0 1-32.097-13.323l-7.704 7.704c-18.659 18.682-48.548 18.134-66.665-.007l-22.711-22.71c-18.149-18.129-18.671-48.008.006-66.665l7.698-7.698A206.714 206.714 0 0 1 58.003 319.2h-10.87C21.145 319.2 0 298.056 0 272.067v-32.134C0 213.944 21.145 192.8 47.134 192.8h10.87a206.755 206.755 0 0 1 13.323-32.097L63.623 153c-18.666-18.646-18.151-48.528.006-66.665l22.713-22.712c18.159-18.184 48.041-18.638 66.664.006l7.697 7.697A206.893 206.893 0 0 1 192.8 58.003v-10.87C192.8 21.144 213.944 0 239.934 0h32.133C298.056 0 319.2 21.144 319.2 47.133v10.871a206.698 206.698 0 0 1 32.097 13.323l7.704-7.704c18.659-18.682 48.548-18.134 66.665.007l22.711 22.71c18.149 18.129 18.671 48.008-.006 66.665l-7.698 7.698a206.714 206.714 0 0 1 13.323 32.097h10.87c25.989 0 47.134 21.144 47.134 47.133v32.134c0 25.989-21.145 47.133-47.134 47.133h-10.87a206.755 206.755 0 0 1-13.323 32.097l7.704 7.704c18.666 18.646 18.151 48.528-.006 66.665l-22.713 22.712c-18.159 18.184-48.041 18.638-66.664-.006l-7.697-7.697a206.893 206.893 0 0 1-32.097 13.323v10.871c0 25.987-21.144 47.131-47.134 47.131zM165.717 409.17a176.812 176.812 0 0 0 45.831 19.025 14.999 14.999 0 0 1 11.252 14.524v22.148c0 9.447 7.687 17.133 17.134 17.133h32.133c9.447 0 17.134-7.686 17.134-17.133v-22.148a14.999 14.999 0 0 1 11.252-14.524 176.812 176.812 0 0 0 45.831-19.025 15 15 0 0 1 18.243 2.305l15.688 15.689c6.764 6.772 17.626 6.615 24.224.007l22.727-22.726c6.582-6.574 6.802-17.438.006-24.225l-15.695-15.695a15 15 0 0 1-2.305-18.242 176.78 176.78 0 0 0 19.024-45.831 15 15 0 0 1 14.524-11.251h22.147c9.447 0 17.134-7.686 17.134-17.133v-32.134c0-9.447-7.687-17.133-17.134-17.133H442.72a15 15 0 0 1-14.524-11.251 176.815 176.815 0 0 0-19.024-45.831 15 15 0 0 1 2.305-18.242l15.689-15.689c6.782-6.774 6.605-17.634.006-24.225l-22.725-22.725c-6.587-6.596-17.451-6.789-24.225-.006l-15.694 15.695a15 15 0 0 1-18.243 2.305 176.812 176.812 0 0 0-45.831-19.025 14.999 14.999 0 0 1-11.252-14.524v-22.15c0-9.447-7.687-17.133-17.134-17.133h-32.133c-9.447 0-17.134 7.686-17.134 17.133v22.148a14.999 14.999 0 0 1-11.252 14.524 176.812 176.812 0 0 0-45.831 19.025 15.002 15.002 0 0 1-18.243-2.305l-15.688-15.689c-6.764-6.772-17.627-6.615-24.224-.007l-22.727 22.726c-6.582 6.574-6.802 17.437-.006 24.225l15.695 15.695a15 15 0 0 1 2.305 18.242 176.78 176.78 0 0 0-19.024 45.831 15 15 0 0 1-14.524 11.251H47.134C37.687 222.8 30 230.486 30 239.933v32.134c0 9.447 7.687 17.133 17.134 17.133h22.147a15 15 0 0 1 14.524 11.251 176.815 176.815 0 0 0 19.024 45.831 15 15 0 0 1-2.305 18.242l-15.689 15.689c-6.782 6.774-6.605 17.634-.006 24.225l22.725 22.725c6.587 6.596 17.451 6.789 24.225.006l15.694-15.695c3.568-3.567 10.991-6.594 18.244-2.304z"></path><path d="M256 367.4c-61.427 0-111.4-49.974-111.4-111.4S194.573 144.6 256 144.6 367.4 194.574 367.4 256 317.427 367.4 256 367.4zm0-192.8c-44.885 0-81.4 36.516-81.4 81.4s36.516 81.4 81.4 81.4 81.4-36.516 81.4-81.4-36.515-81.4-81.4-81.4z"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button></div><div class="FT__d1Pc6iWI4rU0fF0p"><div class="vertical reflex-container"><div class="vertical reflex-element" style="flex: 0.33 1 0%;"><div class="BD4ePLWnkWj6WB7tnUOc  "><div class="JVugG_Gbbl8jzwOc1q6W"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      HFjRdo7kHsG0m7GoHDg2
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Prompt</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Scratchpad</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Solutions</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Video Explanation</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><div class="u-flexSpacer"></div></div><div class="ILJJA5kcNO3NNdlR2PIQ "><div class="PAtInzqijL5O7vthyuNh u-hidden"><div class="SH2k7kjVSwFKa7pieAE8 "><div class="cm-editor ͼ1 ͼ2 ͼ4 ͼ5 ͼ3n ͼ3m"><div aria-live="polite" style="position: absolute; top: -10000px;"></div><div tabindex="-1" class="cm-scroller"><div class="cm-gutters" aria-hidden="true" style="min-height: 14px; position: sticky;"><div class="cm-gutter cm-lineNumbers"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;">9</div><div class="cm-gutterElement cm-activeLineGutter" style="height: 14px;">1</div></div><div class="cm-gutter cm-foldGutter"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;"><span title="Unfold line">›</span></div><div class="cm-gutterElement cm-activeLineGutter" style="height: 14px;"></div></div></div><div spellcheck="false" autocorrect="off" autocapitalize="off" translate="no" contenteditable="true" class="cm-content cm-lineWrapping" style="tab-size: 4" role="textbox" aria-multiline="true" aria-autocomplete="list"><div class="cm-activeLine cm-line"><span class="ͼr">Write </span><span class="ͼr">whatever </span><span class="ͼr">you </span><span class="ͼr">want </span><span class="ͼr">here</span><span class="ͼv">.</span></div></div><div class="cm-selectionLayer" aria-hidden="true"></div><div class="cm-cursorLayer" aria-hidden="true" style="animation-duration: 1200ms;"><div class="cm-cursor cm-cursor-primary" style="left: 0px; top: 0px; height: 0px;"></div></div></div></div></div></div><div class="PAtInzqijL5O7vthyuNh"><div class="jTkuHfOQH3L3HHmwPlJF  "><div class="uwUbSWm9V0ZSJ4gulz1h"><div class="ZqUsZdoA7jZWJAW3mlgZ"><span class="Hj1pF2lRQTvzyk9N2bZ_">Difficulty: </span><span class="
+  k5TOGyZC96x1C44FseXE
+  RtAj9O1yuJvyE_McZlJu" data-tip="Hard" currentitem="false"></span></div><div class="ZqUsZdoA7jZWJAW3mlgZ"><span class="Hj1pF2lRQTvzyk9N2bZ_">Category: </span><span class="">Arrays</span></div><div class="ZqUsZdoA7jZWJAW3mlgZ"><span class="Hj1pF2lRQTvzyk9N2bZ_">Successful Submissions: </span><span class="">22,870+</span></div></div><h2 class="wBpuKvBGWdd7o3KaUFOQ">Largest Range<div class="lFcRs4PtZfHpa3dkuyaE"><div data-tip="Question Not Submitted" class="BfC3RTvnU7R_k49n9ahp o5z7gBjWlhcY3lFlXVEo _9YSDxfK6t2TQGYpB9UJw zID0MIsc6tojSv0ZvLZA fNNakthNj0odlRHr5YmZ" currentitem="false"></div></div><svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="qm8sWAa7_5ACRip3akq_"><path d="M12.821 16a.5.5 0 0 1-.203-.043L8 13.901l-4.618 2.056a.501.501 0 0 1-.694-.556L3.707 10.3.147 6.732a.502.502 0 0 1 .255-.845l5.103-1.023L7.543.272c.16-.362.753-.362.914 0l2.037 4.592 5.104 1.023a.5.5 0 0 1 .255.845l-3.56 3.567L13.31 15.4a.5.5 0 0 1-.49.6zM8 12.852c.069 0 .138.015.203.043l3.938 1.754-.882-4.417a.502.502 0 0 1 .137-.452l3.09-3.094-4.441-.89a.5.5 0 0 1-.36-.288L8 1.708l-1.686 3.8a.5.5 0 0 1-.36.288l-4.44.89 3.09 3.094c.117.118.169.288.136.452l-.882 4.417 3.939-1.754A.497.497 0 0 1 8 12.852z"></path></svg></h2><div class="TLQjVhfBX4gHWkO9qYsJ ae-workspace-light"><div class="html">
+<p>
+  Write a function that takes in an array of integers and returns an array of
+  length 2 representing the largest range of integers contained in that array.
+</p>
+<p>
+  The first number in the output array should be the first number in the range,
+  while the second number should be the last number in the range.
+</p>
+<p>
+  A range of numbers is defined as a set of numbers that come right after each
+  other in the set of real integers. For instance, the output array
+  <span>[2, 6]</span> represents the range <span>{2, 3, 4, 5, 6}</span>, which
+  is a range of length 5. Note that numbers don't need to be sorted or adjacent
+  in the input array in order to form a range.
+</p>
+<p>You can assume that there will only be one largest range.</p>
+<h3>Sample Input</h3>
+<pre><span class="CodeEditor-promptParameter">array</span> = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6]
+</pre>
+<h3>Sample Output</h3>
+<pre>[0, 7]
+</pre>
+</div></div><div class="ubkRh609gZAKC63eyoHt"><h3 class="vygxGX6EU5SRulNpPyt2">Hints</h3><div class="bkkMG8fczzJ203ky4pHV"><div class="
+      m9qHEqW419vul78Ks_N4
+      g48zh7pepCprgQNnhjYR
+      mM3sM9N65X8SED6MshZA
+      " tabindex="0"><div class="
+      kDoyoLEgMLE4k325vN3f
+      undefined
+      j_lw6dN2omYx5lZJ8ABZ
+      
+      lVJy_CZchkfIT7EoMqL7"><div class="I58Rrhf2fmpCKtHv9Zj9">Hint 1</div><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" xml:space="preserve" class="IRK2SKMnxjFj8TmtU5p0 "><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z"></path></svg></div><div class="wydVeRqMMtvFhbtm0Oda " style="transition: height 400ms linear 0s; height: 0px;"><div class="ya7hOTvkcvOlBTsWTi3l"><div class="U1quNvMraAr3Hbq2JfVQ"><p>
+How can you use a hash table to solve this problem with an algorithm that runs in linear time?
+</p>
+</div></div></div></div></div><div class="bkkMG8fczzJ203ky4pHV"><div class="
+      m9qHEqW419vul78Ks_N4
+      g48zh7pepCprgQNnhjYR
+      mM3sM9N65X8SED6MshZA
+      " tabindex="0"><div class="
+      kDoyoLEgMLE4k325vN3f
+      undefined
+      j_lw6dN2omYx5lZJ8ABZ
+      
+      lVJy_CZchkfIT7EoMqL7"><div class="I58Rrhf2fmpCKtHv9Zj9">Hint 2</div><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" xml:space="preserve" class="IRK2SKMnxjFj8TmtU5p0 "><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z"></path></svg></div><div class="wydVeRqMMtvFhbtm0Oda " style="transition: height 400ms linear 0s; height: 0px;"><div class="ya7hOTvkcvOlBTsWTi3l"><div class="U1quNvMraAr3Hbq2JfVQ">
+<p>
+Iterate through the input array once, storing every unique number in a hash table and mapping every number to a falsy value. This hash table will not only provide for fast access of the numbers in the input array, but it will also allow you to keep track of "visited" and "unvisited" numbers, so as not to unnecessarily repeat work.
+</p>
+</div></div></div></div></div><div class="bkkMG8fczzJ203ky4pHV"><div class="
+      m9qHEqW419vul78Ks_N4
+      g48zh7pepCprgQNnhjYR
+      mM3sM9N65X8SED6MshZA
+      " tabindex="0"><div class="
+      kDoyoLEgMLE4k325vN3f
+      undefined
+      j_lw6dN2omYx5lZJ8ABZ
+      
+      lVJy_CZchkfIT7EoMqL7"><div class="I58Rrhf2fmpCKtHv9Zj9">Hint 3</div><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" xml:space="preserve" class="IRK2SKMnxjFj8TmtU5p0 "><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z"></path></svg></div><div class="wydVeRqMMtvFhbtm0Oda " style="transition: height 400ms linear 0s; height: 0px;"><div class="ya7hOTvkcvOlBTsWTi3l"><div class="U1quNvMraAr3Hbq2JfVQ">
+<p>
+Iterate through the input array once more, this time stopping at every number to check if the number is marked as "visited" in the hash table. If it is, skip it; if it isn't, start expanding outwards from that number with a left number and a right number, continuously checking if those left and right numbers are in the hash table (and thus in the input array), and marking them as "visited" in the hash table if they are. This should allow you to quickly find the largest range in which the current number is contained, all the while setting you up not to perform unnecessary work later.
+</p></div></div></div></div></div><div class="bkkMG8fczzJ203ky4pHV"><div class="
+      m9qHEqW419vul78Ks_N4
+      g48zh7pepCprgQNnhjYR
+      mM3sM9N65X8SED6MshZA
+      " tabindex="0"><div class="
+      kDoyoLEgMLE4k325vN3f
+      undefined
+      j_lw6dN2omYx5lZJ8ABZ
+      
+      lVJy_CZchkfIT7EoMqL7"><div class="I58Rrhf2fmpCKtHv9Zj9">Optimal Space &amp; Time Complexity</div><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" xml:space="preserve" class="IRK2SKMnxjFj8TmtU5p0 "><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z"></path></svg></div><div class="wydVeRqMMtvFhbtm0Oda " style="transition: height 400ms linear 0s; height: 0px;"><div class="ya7hOTvkcvOlBTsWTi3l"><div class="U1quNvMraAr3Hbq2JfVQ">O(n) time | O(n) space - where n is the length of the input array</div></div></div></div></div></div></div></div><div class="PAtInzqijL5O7vthyuNh u-hidden rKZE7N2uk1_wwDLu0FUz"><div class="xWoF7FXbmzeKXRXR1zIT"><div class="_6dvqi7MzXQvOaZLVWiMA"><h3 class="hqqtf6h_0n362gYztql1">Our Solutions</h3></div><div class="WfTN0Z1ud6U0_OgWL9yW"><button class="MdBnpwi0vt784MmNaSUt">Solution 1</button></div><div class="SP89CAYLN7CuJMZz4Z9L"><div class="C4QFkxsH524QQIvxN4II"><h3 class="hqqtf6h_0n362gYztql1">User Solutions</h3><span class="EDEYGqybTiILWxGmcIcw wYlOl4Cuf6L4XYCfkzxQ" style="font-size: 13rem;">NEW</span></div><div class="u-flexSpacer"></div><div class="nIOa2GpPkzSt8t4ZFV_K wz__OvUMvfqxgQGt7oGr"><button class="
+    MrtifISZdM8XIytdb22s 
+    Vh0v4u5vCIQ0zqUGdV7w 
+    
+    
+    fvdKvwo1Q5GndCVLwlZI
+  " data-tip="" data-tip-disable="false" type="button" tabindex="0"><span class="oWoHqZGV1RWlIC1vbJQA">Most Upvoted</span><div class="u-flexSpacer"></div><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" xml:space="preserve" class="yRfHP0TDVITiDuhFO1M8 undefined "><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z"></path></svg></button><ul class="AB2APtmBPMcyfX5cfdS5  rcXInY2XKef7uVIGuunB " tabindex="-1" role="listbox" aria-expanded="false"><li role="option" tabindex="-1" data-index="0" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            x6RCE05ahMg6e_uNs7nP
+          ">Most Upvoted</li><li role="option" tabindex="-1" data-index="1" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">Newest</li><li role="option" tabindex="-1" data-index="2" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">Oldest</li></ul></div><div class="nIOa2GpPkzSt8t4ZFV_K wz__OvUMvfqxgQGt7oGr"><button class="
+    MrtifISZdM8XIytdb22s 
+    Vh0v4u5vCIQ0zqUGdV7w 
+    
+    
+    fvdKvwo1Q5GndCVLwlZI
+  " data-tip="" data-tip-disable="false" type="button" tabindex="0" currentitem="false"><span class="oWoHqZGV1RWlIC1vbJQA">All Languages</span><div class="u-flexSpacer"></div><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 292.362 292.362" xml:space="preserve" class="yRfHP0TDVITiDuhFO1M8 undefined "><path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z"></path></svg></button><ul class="AB2APtmBPMcyfX5cfdS5  rcXInY2XKef7uVIGuunB " tabindex="-1" role="listbox" aria-expanded="false"><li role="option" tabindex="-1" data-index="0" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            x6RCE05ahMg6e_uNs7nP
+          ">All Languages</li><li role="option" tabindex="-1" data-index="1" class="
+            vJoG_b49ptmNbdtbpaNT
+            o7Mk1m7KEarFRL624RP1
+            
+            
+            
+          ">JavaScript</li></ul></div><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      
+      
+      HiCquGI3tXWbAiiSD9lW
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="sn_huI8g2C_w0FSTObvj"><g data-name="03 Login"><path d="M256 512a25 25 0 0 1-25-25V25a25 25 0 0 1 50 0v462a25 25 0 0 1-25 25z"></path><path d="M487 281H25a25 25 0 0 1 0-50h462a25 25 0 0 1 0 50z"></path></g></svg>Share</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button></div><div class="Gfh498S0Wojekr28QynT"><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">6</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">Simple Solution - Simple Code - Simple Comments</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">Majid Shaikh</span> on <span class="u-bold">June 22, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">Java</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">5</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">Set implementation</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">Dwight Cummings</span> on <span class="u-bold">July 9, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">Python</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">1</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">Simple JS solution</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">Marzdor</span> on <span class="u-bold">September 7, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">JavaScript</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">1</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">Short, simple and easy to read Python solution using set</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">TamasK</span> on <span class="u-bold">August 18, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">Python</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">0</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">Simple Solution O(nlogn) using TreeMap - Simple Comments</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">Bohdan Abadi</span> on <span class="u-bold">September 28, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">Java</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">0</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">Easy to understand using HashMap</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">Rohan Malji</span> on <span class="u-bold">September 26, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">Java</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">0</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">easy to understand solution o(n) time and space</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">mofthecross</span> on <span class="u-bold">September 16, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">JavaScript</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">0</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">Solution with O(n) time and space - Good Readability</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">fablakeson</span> on <span class="u-bold">September 13, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">Java</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">0</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">o(nlogn) time and o(1) space solution</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">abilash</span> on <span class="u-bold">September 5, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">JavaScript</div></button><button class="sPH8Ia_WIT4CnFKE2mzV"><div class="zFr2MmSLY9essI9tdD1A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 444.819 444.819" xml:space="preserve" fill="currentColor" class="cuHBU1zZhMDOnBL7NBLj"><path d="M433.968 278.657 248.387 92.79c-7.419-7.044-16.08-10.566-25.977-10.566-10.088 0-18.652 3.521-25.697 10.566L10.848 278.657C3.615 285.887 0 294.549 0 304.637c0 10.28 3.619 18.843 10.848 25.693l21.411 21.413c6.854 7.23 15.42 10.852 25.697 10.852 10.278 0 18.842-3.621 25.697-10.852L222.41 213.271 361.168 351.74c6.848 7.228 15.413 10.852 25.7 10.852 10.082 0 18.747-3.624 25.975-10.852l21.409-21.412c7.043-7.043 10.567-15.608 10.567-25.693 0-10.09-3.614-18.751-10.851-25.978z"></path></svg><div class="VR8nuA0YVQYjDEJzQ2hY">0</div></div><div class="SL37dzoDvMoLYM4r1qpA"><div class="mS6zb0kXx3e1VMDXddEp">A short and efficient python solution</div><div class="lIvgUxUKsgVX0GPYIncr">shared by <span class="u-bold">Abhilash Nataraja</span> on <span class="u-bold">September 4, 2022</span></div></div><div class="u-flexSpacer"></div><div class="nKzg4n5ezCxj0HpDW2sQ ejiM_qd8IkHbUROB62b0">Python</div></button></div><div class="uP1MfiCBZXxCgyz4G_LA"><button class="TAFdembKqGcY11tKNC6Q c7CAiIlPF0Ye0zJOnsZj"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 444.531 444.531" xml:space="preserve" class="BVBfb2HZ0RwvtkFD1dig"><path d="M213.13 222.409 351.88 83.653c7.05-7.043 10.567-15.657 10.567-25.841 0-10.183-3.518-18.793-10.567-25.835l-21.409-21.416C323.432 3.521 314.817 0 304.637 0s-18.791 3.521-25.841 10.561L92.649 196.425c-7.044 7.043-10.566 15.656-10.566 25.841s3.521 18.791 10.566 25.837l186.146 185.864c7.05 7.043 15.66 10.564 25.841 10.564s18.795-3.521 25.834-10.564l21.409-21.412c7.05-7.039 10.567-15.604 10.567-25.697 0-10.085-3.518-18.746-10.567-25.978L213.13 222.409z"></path></svg></button><button class="TAFdembKqGcY11tKNC6Q jBapMpyAgptn1xAxmuB9 ">1</button><button class="TAFdembKqGcY11tKNC6Q  ">2</button><button class="TAFdembKqGcY11tKNC6Q  ">3</button><button class="TAFdembKqGcY11tKNC6Q  ">4</button><button class="TAFdembKqGcY11tKNC6Q "><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 444.819 444.819" xml:space="preserve" class="BVBfb2HZ0RwvtkFD1dig"><path d="M352.025 196.712 165.884 10.848C159.029 3.615 150.469 0 140.187 0s-18.842 3.619-25.697 10.848L92.792 32.264c-7.044 7.043-10.566 15.604-10.566 25.692 0 9.897 3.521 18.56 10.566 25.981L231.545 222.41 92.786 361.168c-7.042 7.043-10.564 15.604-10.564 25.693 0 9.896 3.521 18.562 10.564 25.98l21.7 21.413c7.043 7.043 15.612 10.564 25.697 10.564 10.089 0 18.656-3.521 25.697-10.564L352.025 248.39c7.046-7.423 10.571-16.084 10.571-25.981.001-10.088-3.525-18.654-10.571-25.697z"></path></svg></button></div></div></div><div class="PAtInzqijL5O7vthyuNh u-hidden"><div class="rOxk9CDVrlQNvIllVqRa"><p class="
+        nY_3Mnm8SUH7gBabhMgg
+        gH1Qd2AvV2cOqmXjHG65
+        eNWHleYeh2jssnY_NOtd
+        BncdWYZr_2wTec9oUDDf
+        WWyAmMzBXME0am4Lqwiq
+        H_gYJ5wAowgJY9mrSQ2N
+        aipBqoVP2h7UyYt6yCFM
+    "><img src="./Largest Range _ AlgoExpert_files/63753192a8f543aefa5f.jpg" class="P1gwX5WIHEiHlTQOrb9t" alt=""><b>Instructor</b>: Clement Mihailescu</p><div class="UbmWiQCJdJCS9VLbvFuI WXgwX4Z87eGAtwwtWMzj"><iframe class="GjXIOuKyCX9PawMK44G4" src="./Largest Range _ AlgoExpert_files/241819502.html" allowfullscreen="" allow="autoplay; encrypted-media" frameborder="0" loading="lazy"></iframe></div><div class="DoUY1B9GUC7Npim1_buF"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      RqcR5WN2P3u_5GegofxE
+      HEVFBZYxJbS62fY54MBw
+      
+      
+      
+      
+      
+      CC3Ib8cXNmcToQwkknxK
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Go to Conceptual Overview</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      RqcR5WN2P3u_5GegofxE
+      HEVFBZYxJbS62fY54MBw
+      
+      
+      
+      
+      
+      CC3Ib8cXNmcToQwkknxK
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Go to Code Walkthrough</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button></div></div></div></div></div></div><div class="B9wIhSTq0LRZRCvQTBga S3OIZBvxQ89YQ3p_M5ja  reflex-splitter"></div><div class="vertical reflex-element" style="flex: 0.67 1 0%;"><div class="horizontal reflex-container"><div class="horizontal reflex-element" style="flex: 0.65 1 0%;"><div class="vertical reflex-container"><div class="vertical reflex-element" style="flex: 0.5 1 0%;"><div class="BD4ePLWnkWj6WB7tnUOc  "><div class="JVugG_Gbbl8jzwOc1q6W"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      HFjRdo7kHsG0m7GoHDg2
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Your Solutions</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><div class="u-flexSpacer"></div><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      sd5K_Ne_UvI9kQ0dZ2Ea
+    " type="button" data-tip="Full Screen" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.333 469.333" fill="currentColor" xml:space="preserve" class="wwSdPooRCjWGuO2u68Vv"><path d="M160 0H10.667A10.66 10.66 0 0 0 0 10.667V160a10.66 10.66 0 0 0 10.667 10.667H32A10.66 10.66 0 0 0 42.667 160V42.667H160A10.66 10.66 0 0 0 170.667 32V10.667A10.66 10.66 0 0 0 160 0zM458.667 0H309.333a10.66 10.66 0 0 0-10.667 10.667V32a10.66 10.66 0 0 0 10.667 10.667h117.333V160a10.66 10.66 0 0 0 10.667 10.667h21.333A10.66 10.66 0 0 0 469.333 160V10.667A10.66 10.66 0 0 0 458.667 0zM458.667 298.667h-21.333a10.66 10.66 0 0 0-10.667 10.667v117.333H309.333a10.66 10.66 0 0 0-10.667 10.667v21.333a10.66 10.66 0 0 0 10.667 10.667h149.333a10.66 10.66 0 0 0 10.667-10.667V309.333a10.66 10.66 0 0 0-10.666-10.666zM160 426.667H42.667V309.333A10.66 10.66 0 0 0 32 298.666H10.667A10.662 10.662 0 0 0 0 309.333v149.333a10.66 10.66 0 0 0 10.667 10.667H160a10.66 10.66 0 0 0 10.667-10.667v-21.333A10.66 10.66 0 0 0 160 426.667z"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      sd5K_Ne_UvI9kQ0dZ2Ea
+    " type="button" data-tip="Restore Default Code" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="P1spIAweyZFQI8hFurkE"><path d="M488 256a232.014 232.014 0 0 1-373.467 183.892 233.557 233.557 0 0 1-82.025-121.445 24 24 0 1 1 46.235-12.894 185.25 185.25 0 0 0 65.083 96.312A182.236 182.236 0 0 0 256 440c101.458 0 184-82.542 184-184S357.458 72 256 72a182.241 182.241 0 0 0-112.175 38.135 184.6 184.6 0 0 0-32.139 31.792l-18.549 5.456-2.976-53.576A231.977 231.977 0 0 1 488 256ZM62.771 223.024l136-40a24 24 0 1 0-13.543-46.048L78.282 168.43l-6.32-113.761a24 24 0 1 0-47.924 2.662l8 144a24 24 0 0 0 30.734 21.693Z"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      RqcR5WN2P3u_5GegofxE
+      hXKuHkYHPq9QrCq35gHD
+      
+      
+      
+      
+      
+      CpVyp4ZdiiJ2A1YSknyE
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Run Code</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button></div><div class="_5Y_y5dN7pkjcKB22vQiZ"><button class="anfWq7W9KnDm5lznljxc MzIiQ4SWFZxH11vGU8Aw">Solution 1</button><button class="anfWq7W9KnDm5lznljxc ">Solution 2</button><button class="anfWq7W9KnDm5lznljxc ">Solution 3</button></div><div class="GxNw5ysk7zPG4pWwHET_"></div><div class="ILJJA5kcNO3NNdlR2PIQ "><div class="PAtInzqijL5O7vthyuNh"><div class="SH2k7kjVSwFKa7pieAE8 "><div class="cm-editor ͼ1 ͼ2 ͼ4 ͼ5 ͼ3p ͼ3o"><div aria-live="polite" style="position: absolute; top: -10000px;"></div><div tabindex="-1" class="cm-scroller"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><div class="cm-gutters" aria-hidden="true" style="min-height: 145.156px; position: sticky;"><div class="cm-gutter cm-lineNumbers"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;">9</div><div class="cm-gutterElement" style="height: 19.5938px; margin-top: 4px;">1</div><div class="cm-gutterElement" style="height: 19.5938px;">2</div><div class="cm-gutterElement" style="height: 19.5938px;">3</div><div class="cm-gutterElement" style="height: 19.5938px;">4</div><div class="cm-gutterElement" style="height: 19.5938px;">5</div><div class="cm-gutterElement" style="height: 19.5938px;">6</div><div class="cm-gutterElement cm-activeLineGutter" style="height: 19.5938px;">7</div></div><div class="cm-gutter cm-foldGutter"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;"><span title="Unfold line">›</span></div><div class="cm-gutterElement" style="height: 19.5938px; margin-top: 4px;"><span title="Fold line">⌄</span></div><div class="cm-gutterElement cm-activeLineGutter" style="height: 19.5938px; margin-top: 97.9688px;"></div></div></div><div spellcheck="false" autocorrect="off" autocapitalize="off" translate="no" contenteditable="true" class="cm-content" style="tab-size: 4;" role="textbox" aria-multiline="true" aria-autocomplete="list"><div class="cm-line"><span class="ͼq">function</span> <span class="ͼt">largestRange</span>(<span class="ͼt">array</span>) {</div><div class="cm-line">  <span class="ͼw">// Write your code here.</span></div><div class="cm-line">}</div><div class="cm-line"><br></div><div class="cm-line"><span class="ͼw">// Do not edit the line below.</span></div><div class="cm-line"><span class="ͼr">exports</span><span class="ͼv">.</span><span class="ͼs">largestRange</span> <span class="ͼv">=</span> <span class="ͼr">largestRange</span><span class="ͼv">;</span></div><div class="cm-activeLine cm-line"><br></div></div><div class="cm-selectionLayer" aria-hidden="true"></div><div class="cm-cursorLayer" aria-hidden="true" style="animation-duration: 1200ms; animation-name: cm-blink;"><div class="cm-cursor cm-cursor-primary" style="left: 37.7344px; top: 122.562px; height: 16px;"></div></div></div></div></div></div></div></div></div><div class="B9wIhSTq0LRZRCvQTBga S3OIZBvxQ89YQ3p_M5ja  reflex-splitter"></div><div class="vertical reflex-element" style="flex: 0.5 1 0%;"><div class="BD4ePLWnkWj6WB7tnUOc  "><div class="JVugG_Gbbl8jzwOc1q6W"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      HFjRdo7kHsG0m7GoHDg2
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Tests</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Quick Test</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Sandbox</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><div class="u-flexSpacer"></div><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      sd5K_Ne_UvI9kQ0dZ2Ea
+    " type="button" data-tip="Show" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="jFPmrukZutmSQA14F3UN"><path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" stroke="currentColor" stroke-width="3"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      NMIDxYkd8VA9f2wqMVRX
+      RqcR5WN2P3u_5GegofxE
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      sd5K_Ne_UvI9kQ0dZ2Ea
+    " type="button" data-tip="More Info" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330" fill="currentColor" xml:space="preserve" class="wEFiohzds7Ekj1s5UXR4"><path d="M165 0C74.019 0 0 74.02 0 165.001 0 255.982 74.019 330 165 330s165-74.018 165-164.999S255.981 0 165 0zm0 300c-74.44 0-135-60.56-135-134.999S90.56 30 165 30s135 60.562 135 135.001C300 239.44 239.439 300 165 300z"></path><path d="M164.998 70c-11.026 0-19.996 8.976-19.996 20.009 0 11.023 8.97 19.991 19.996 19.991 11.026 0 19.996-8.968 19.996-19.991 0-11.033-8.97-20.009-19.996-20.009zM165 140c-8.284 0-15 6.716-15 15v90c0 8.284 6.716 15 15 15 8.284 0 15-6.716 15-15v-90c0-8.284-6.716-15-15-15z"></path></svg></span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button></div><div class="ILJJA5kcNO3NNdlR2PIQ "><div class="PAtInzqijL5O7vthyuNh u-hidden"><div class="SH2k7kjVSwFKa7pieAE8 "><div class="cm-editor ͼ1 ͼ2 ͼ4 ͼ5 ͼ3r ͼ3q"><div aria-live="polite" style="position: absolute; top: -10000px;"></div><div tabindex="-1" class="cm-scroller"><div class="cm-gutters" aria-hidden="true" style="min-height: 154px; position: sticky;"><div class="cm-gutter cm-lineNumbers"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;">99</div><div class="cm-gutterElement cm-activeLineGutter" style="height: 14px;">1</div><div class="cm-gutterElement" style="height: 14px;">2</div><div class="cm-gutterElement" style="height: 14px;">3</div><div class="cm-gutterElement" style="height: 14px;">4</div><div class="cm-gutterElement" style="height: 14px;">5</div><div class="cm-gutterElement" style="height: 14px;">6</div><div class="cm-gutterElement" style="height: 14px;">7</div><div class="cm-gutterElement" style="height: 14px;">8</div><div class="cm-gutterElement" style="height: 14px;">9</div><div class="cm-gutterElement" style="height: 14px;">10</div><div class="cm-gutterElement" style="height: 14px;">11</div></div><div class="cm-gutter cm-foldGutter"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;"><span title="Unfold line">›</span></div><div class="cm-gutterElement cm-activeLineGutter" style="height: 14px;"></div><div class="cm-gutterElement" style="height: 14px; margin-top: 84px;"><span title="Fold line">⌄</span></div></div></div><div spellcheck="false" autocorrect="off" autocapitalize="off" translate="no" contenteditable="true" class="cm-content" style="tab-size: 4" role="textbox" aria-multiline="true" aria-autocomplete="list"><div class="cm-activeLine cm-line"><span class="ͼw">// This file is initialized with a code version of this</span></div><div class="cm-line"><span class="ͼw">// question's sample test case. Feel free to add, edit,</span></div><div class="cm-line"><span class="ͼw">// or remove test cases in this file as you see fit!</span></div><div class="cm-line"><br></div><div class="cm-line"><span class="ͼq">const</span> <span class="ͼt">program</span> <span class="ͼv">=</span> <span class="ͼt">require</span>(<span class="ͼ13">'./program'</span>)<span class="ͼv">;</span></div><div class="cm-line"><span class="ͼq">const</span> <span class="ͼt">chai</span> <span class="ͼv">=</span> <span class="ͼt">require</span>(<span class="ͼ13">'chai'</span>)<span class="ͼv">;</span></div><div class="cm-line"><br></div><div class="cm-line"><span class="ͼt">it</span>(<span class="ͼ13">'Test Case #1'</span><span class="ͼv">,</span> <span class="ͼq">function</span> () {</div><div class="cm-line">  <span class="ͼr">chai</span><span class="ͼv">.</span><span class="ͼs">expect</span>(<span class="ͼr">program</span><span class="ͼv">.</span><span class="ͼs">largestRange</span>([<span class="ͼu">1</span><span class="ͼv">,</span> <span class="ͼu">11</span><span class="ͼv">,</span> <span class="ͼu">3</span><span class="ͼv">,</span> <span class="ͼu">0</span><span class="ͼv">,</span> <span class="ͼu">15</span><span class="ͼv">,</span> <span class="ͼu">5</span><span class="ͼv">,</span> <span class="ͼu">2</span><span class="ͼv">,</span> <span class="ͼu">4</span><span class="ͼv">,</span> <span class="ͼu">10</span><span class="ͼv">,</span> <span class="ͼu">7</span><span class="ͼv">,</span> <span class="ͼu">12</span><span class="ͼv">,</span> <span class="ͼu">6</span>]))<span class="ͼv">.</span><span class="ͼs">to</span><span class="ͼv">.</span><span class="ͼs">deep</span><span class="ͼv">.</span><span class="ͼs">equal</span>([<span class="ͼu">0</span><span class="ͼv">,</span> <span class="ͼu">7</span>])<span class="ͼv">;</span></div><div class="cm-line">})<span class="ͼv">;</span></div><div class="cm-line"><br></div></div><div class="cm-selectionLayer" aria-hidden="true"></div><div class="cm-cursorLayer" aria-hidden="true" style="animation-duration: 1200ms;"><div class="cm-cursor cm-cursor-primary" style="left: 0px; top: 0px; height: 0px;"></div></div></div></div></div></div><div class="PAtInzqijL5O7vthyuNh u-hidden"><div class="Q0BVUYHonLOBPFaGXnSI"><span class="eClsCfpiaAjV8Di9m7mh">array</span><div class="SH2k7kjVSwFKa7pieAE8 hAUEfpx5xh1D8apGJUQl"><div class="cm-editor ͼ1 ͼ2 ͼ4 ͼ5 ͼ3t ͼ3s ͼ6"><div aria-live="polite" style="position: absolute; top: -10000px;"></div><div tabindex="-1" class="cm-scroller"><div class="cm-gutters" aria-hidden="true" style="min-height: 14px; position: sticky;"><div class="cm-gutter cm-lineNumbers"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;">9</div><div class="cm-gutterElement cm-activeLineGutter" style="height: 14px;">1</div></div><div class="cm-gutter cm-foldGutter"><div class="cm-gutterElement" style="height: 0px; visibility: hidden; pointer-events: none;"><span title="Unfold line">›</span></div><div class="cm-gutterElement cm-activeLineGutter" style="height: 14px;"></div></div><div class="cm-gutter cm-gutter-lint"><div class="cm-gutterElement cm-activeLineGutter" style="height: 14px;"></div></div></div><div spellcheck="false" autocorrect="off" autocapitalize="off" translate="no" contenteditable="true" class="cm-content" style="tab-size: 4" role="textbox" aria-multiline="true" aria-autocomplete="list"><div class="cm-activeLine cm-line">[<span class="ͼu">1</span>, <span class="ͼu">11</span>, <span class="ͼu">3</span>, <span class="ͼu">0</span>, <span class="ͼu">15</span>, <span class="ͼu">5</span>, <span class="ͼu">2</span>, <span class="ͼu">4</span>, <span class="ͼu">10</span>, <span class="ͼu">7</span>, <span class="ͼu">12</span>, <span class="ͼu">6</span>]</div></div><div class="cm-selectionLayer" aria-hidden="true"></div><div class="cm-cursorLayer" aria-hidden="true" style="animation-duration: 1200ms;"><div class="cm-cursor cm-cursor-primary" style="left: 0px; top: 0px; height: 0px;"></div></div></div></div></div></div></div><div class="PAtInzqijL5O7vthyuNh cKl9wX90rv_FsPZzYNpt"><div class="u4hbF0zNgFxOGyaHg28r"><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 1<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 2<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 3<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 4<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 5<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 6<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 7<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">-1</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 8<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">-1</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 9<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">-5</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">-1</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">-4</span><span class="token punctuation">,</span> <span class="token number">-3</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">-6</span><span class="token punctuation">,</span> <span class="token number">-7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">-2</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 10<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">-7</span><span class="token punctuation">,</span> <span class="token number">-7</span><span class="token punctuation">,</span> <span class="token number">-7</span><span class="token punctuation">,</span> <span class="token number">-7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">-8</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">-1</span><span class="token punctuation">,</span> <span class="token number">-3</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">-6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">-5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">-4</span><span class="token punctuation">,</span> <span class="token number">-2</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 11<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 12<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">-1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div><div class="SLRrD2Fp2PUJO7NVDC5a"><div class="YCkEBXW1D7S_HMXaWmOr"><span class="_qL2yGBvygfcYacBukkn">Test Case 13<svg aria-hidden="true" data-prefix="fas" data-icon="share-square" class="Lu9kD4PhZraUxEaX2K9Y" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-tip="Populate Quick Test" currentItem="false"><path fill="currentColor" d="M568.482 177.448 424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z"></path></svg></span><div class="ae-workspace-light"><pre class="EiGIGsfB5b5Km1m40yc0 line-numbers language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"array"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></div></div></div></div></div></div></div></div></div><div class="B9wIhSTq0LRZRCvQTBga TWYdXb0L_4NgXVL6gnkk  reflex-splitter"></div><div class="horizontal reflex-element" style="flex: 0.35 1 0%;"><div class="BD4ePLWnkWj6WB7tnUOc  "><div class="JVugG_Gbbl8jzwOc1q6W"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      HFjRdo7kHsG0m7GoHDg2
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Custom Output</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      N_JadoBuuW0zJyHCbXme
+      RqcR5WN2P3u_5GegofxE
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      
+      
+      
+      
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Raw Output</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><div class="u-flexSpacer"></div><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      RqcR5WN2P3u_5GegofxE
+      iSCKQXa_70NbFugaYQNM
+      
+      
+      
+      
+      
+      CpVyp4ZdiiJ2A1YSknyE
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  ">Submit Code</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button></div><div class="ILJJA5kcNO3NNdlR2PIQ "><div class="PAtInzqijL5O7vthyuNh u-hidden"><div class="ei4nJ5niJtvS3cSOrqkn"><div class="u4QprmFj0k5cQofnsoMx odbprd6_9eQsD734lJ4z " data-tip="" currentitem="false" style="height: 80px; width: 80px;"></div></div></div><div class="PAtInzqijL5O7vthyuNh"><div class="MrYLM0LuekfMINnb3kJ8"><p class="Ub74DJParnypWyVpdHTq Yigl42L2jEin8lWEI9Uk">Run or submit code when you're ready.</p></div></div><div class="PAtInzqijL5O7vthyuNh u-hidden"><div class="MrYLM0LuekfMINnb3kJ8"><p class="Ub74DJParnypWyVpdHTq Yigl42L2jEin8lWEI9Uk">Run or submit code when you're ready.</p></div></div></div><div class="jttNtvZAd_lGZgUpb_Ku  "></div></div></div></div></div></div></div></div></div><div class="A4RntWo8aqMn8ybJvu4A DJgaunssNJRHxYFXwrte "><div class="KjmCY3bJvA2AsAvhcz_8 CE4FeUfG2IJKNJi5vJqw IJjXxY11bZnYnuX7X3qU" aria-label="Close"></div><div class="mkvogekkN8KLBTnI74iR"><a class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      tGRANjCTRq185vDT7KQw
+    " href="https://www.algoexpert.io/questions" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" xml:space="preserve" class="f1spIQA1pFEB3nIl2z6F"><path d="M492 236H144.262c-11.046 0-20 8.954-20 20s8.954 20 20 20H492c11.046 0 20-8.954 20-20s-8.954-20-20-20zM492 86H144.262c-11.046 0-20 8.954-20 20s8.954 20 20 20H492c11.046 0 20-8.954 20-20s-8.954-20-20-20zM492 386H144.262c-11.046 0-20 8.954-20 20s8.954 20 20 20H492c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path><circle cx="27" cy="106" r="27"></circle><circle cx="27" cy="256" r="27"></circle><circle cx="27" cy="406" r="27"></circle></svg> Back To Questions List</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></a><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      tGRANjCTRq185vDT7KQw
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 268.832 268.832" xml:space="preserve" class="f1spIQA1pFEB3nIl2z6F"><path d="m265.171 125.577-80-80c-4.881-4.881-12.797-4.881-17.678 0-4.882 4.882-4.882 12.796 0 17.678l58.661 58.661H12.5c-6.903 0-12.5 5.597-12.5 12.5 0 6.902 5.597 12.5 12.5 12.5h213.654l-58.659 58.661c-4.882 4.882-4.882 12.796 0 17.678 2.44 2.439 5.64 3.661 8.839 3.661s6.398-1.222 8.839-3.661l79.998-80c4.882-4.882 4.882-12.796 0-17.678z"></path></svg> Next Question</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      tGRANjCTRq185vDT7KQw
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.002 512.002" xml:space="preserve" fill="currentColor" class="f1spIQA1pFEB3nIl2z6F"><path d="M354.957 116.545c-6.044-10.441-9.507-22.568-9.507-35.509 0-39.213 31.784-70.997 70.997-70.997s70.997 31.784 70.997 70.997-31.784 70.997-70.997 70.997c-26.272.001-49.212-14.275-61.49-35.488zM354.957 395.455c12.278-21.213 35.218-35.489 61.49-35.489 39.213 0 70.997 31.784 70.997 70.997s-31.784 70.997-70.997 70.997-70.997-31.784-70.997-70.997c0-12.94 3.463-25.067 9.507-35.508zM158.098 222.379c5.391 10.009 8.453 21.454 8.453 33.621 0 39.213-31.784 70.997-70.997 70.997S24.556 295.213 24.556 256s31.784-70.997 70.997-70.997c27.046 0 50.558 15.119 62.545 37.376z"></path><path d="M416.447 0c-44.684 0-81.037 36.353-81.037 81.037a81.142 81.142 0 0 0 6.261 31.253l-40.115 21.566c-4.883 2.625-6.714 8.713-4.088 13.596a10.04 10.04 0 0 0 8.851 5.288 10 10 0 0 0 4.746-1.199l40.608-21.831c15.2 20.166 39.222 32.364 64.775 32.364 44.684 0 81.037-36.353 81.037-81.038C497.484 36.353 461.131 0 416.447 0zm0 141.995c-21.689 0-41.921-11.679-52.802-30.479-5.336-9.218-8.157-19.758-8.157-30.479.001-33.613 27.347-60.958 60.959-60.958s60.958 27.345 60.958 60.958-27.344 60.958-60.958 60.958zM416.447 349.927c-25.554 0-49.576 12.199-64.775 32.365l-180.558-97.061a80.583 80.583 0 0 0 5.477-29.23 81.387 81.387 0 0 0-5.449-29.235l83.299-44.783c4.883-2.625 6.714-8.713 4.088-13.596-2.624-4.883-8.713-6.715-13.596-4.088l-83.306 44.787a80.96 80.96 0 0 0-66.073-34.12c-44.684 0-81.037 36.353-81.037 81.037S50.87 337.04 95.554 337.04c27.215 0 51.32-13.499 66.024-34.137l180.095 96.811a81.146 81.146 0 0 0-6.261 31.253c0 44.684 36.353 81.037 81.038 81.037 44.684 0 81.037-36.353 81.037-81.037-.003-44.687-36.356-81.04-81.04-81.04zM95.554 316.958c-33.612 0-60.958-27.345-60.958-60.958s27.345-60.958 60.958-60.958c22.465 0 43.043 12.299 53.706 32.096 4.746 8.811 7.253 18.791 7.253 28.862-.001 33.612-27.347 60.958-60.959 60.958zm320.893 174.964c-33.612 0-60.959-27.345-60.959-60.958 0-10.722 2.821-21.262 8.158-30.48 10.881-18.8 31.113-30.478 52.801-30.478 33.612 0 60.958 27.346 60.958 60.959s-27.344 60.957-60.958 60.957zM279.091 147.242c-12.919 0-12.941 20.078 0 20.078 12.919.001 12.94-20.078 0-20.078z"></path></svg> Data Structure Visualizer</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><div class="u-flexSpacer"></div><div class="qhlf1kBIQtw8WcIcNBER Fvf06uwPw792bWnwqvaA"><div class="af5O30uWCIOannKtSxwP"><div class=""><div><div class="dpgd0nS3CNbo5HbOOVwI">00:00:00</div><form><label for="minutes" class="PZq9qZgRKfv1lGtvBUUl">Minutes</label><div class="dVkKhYcejDf6GbLaNjZ2  pHJ7YPfApLkeSwiXsfcA"><input id="minutes" class="UBrcE79fH8IvE8NVY_3Q WWjJ8WDy9Cogo7pGhjOn M0rzF3UsopqSZdlgRXES eXk9pcH27TbGz_9XDK9Z" type="number" maxlength="3" min="1" autocomplete="on" value="45"><div class="lmqP3TcecRNTm6dFhk8s mjC4_Nt4SnHQRqylQaMA"></div></div><div class="omz2AIBiP9PNNKytmVcd"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " type="submit" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 494.148 494.148" fill="currentColor" xml:space="preserve" class="AAPdBndqRPvxY9VO_bLw"><path d="M405.284 201.188 130.804 13.28C118.128 4.596 105.356 0 94.74 0 74.216 0 61.52 16.472 61.52 44.044v406.124c0 27.54 12.68 43.98 33.156 43.98 10.632 0 23.2-4.6 35.904-13.308l274.608-187.904c17.66-12.104 27.44-28.392 27.44-45.884.004-17.48-9.664-33.764-27.344-45.864z"></path></svg>Start</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><div class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      AXHUJ_ti2lv8mUOOMuqz
+      jdGKAOquPjS9lRCIFPaV
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " disabled="" type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="AAPdBndqRPvxY9VO_bLw"><path d="M256 106.668c-11.797 0-21.332 9.555-21.332 21.332v128c0 11.777 9.535 21.332 21.332 21.332h128c11.797 0 21.332-9.555 21.332-21.332s-9.535-21.332-21.332-21.332H277.332V128c0-11.777-9.535-21.332-21.332-21.332zm0 0"></path><path d="M256 0C188.16 0 122.453 27.094 73.645 72.34L27.309 26.027a15.98 15.98 0 0 0-17.43-3.476A16.01 16.01 0 0 0 0 37.332V176c0 8.832 7.168 16 16 16h138.668a15.987 15.987 0 0 0 14.781-9.879 15.972 15.972 0 0 0-3.476-17.43L104 102.7c40.852-37.418 95.445-60.031 152-60.031 117.633 0 213.332 95.7 213.332 213.332S373.632 469.332 256 469.332c-57.047 0-110.57-22.227-150.7-62.547-8.32-8.363-21.843-8.387-30.163-.066-8.364 8.32-8.407 21.824-.086 30.187C123.266 485.332 187.52 512 256 512c141.164 0 256-114.836 256-256S397.164 0 256 0zm0 0"></path></svg>Reset</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></div></div></form></div></div><div class="u-hidden"><div><div class="dpgd0nS3CNbo5HbOOVwI">00:00:00</div><div class="omz2AIBiP9PNNKytmVcd"><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      S14A4_ChwosXpQQw5gbT
+      
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 494.148 494.148" fill="currentColor" xml:space="preserve" class="AAPdBndqRPvxY9VO_bLw"><path d="M405.284 201.188 130.804 13.28C118.128 4.596 105.356 0 94.74 0 74.216 0 61.52 16.472 61.52 44.044v406.124c0 27.54 12.68 43.98 33.156 43.98 10.632 0 23.2-4.6 35.904-13.308l274.608-187.904c17.66-12.104 27.44-28.392 27.44-45.884.004-17.48-9.664-33.764-27.344-45.864z"></path></svg>Start</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></button><div class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      AXHUJ_ti2lv8mUOOMuqz
+      jdGKAOquPjS9lRCIFPaV
+      
+      AyCvqlD7FUsXvbfN2lVO
+      
+      
+      w5zsfcqGTGEtBJ5Uzd9N
+    " disabled="" type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="AAPdBndqRPvxY9VO_bLw"><path d="M256 106.668c-11.797 0-21.332 9.555-21.332 21.332v128c0 11.777 9.535 21.332 21.332 21.332h128c11.797 0 21.332-9.555 21.332-21.332s-9.535-21.332-21.332-21.332H277.332V128c0-11.777-9.535-21.332-21.332-21.332zm0 0"></path><path d="M256 0C188.16 0 122.453 27.094 73.645 72.34L27.309 26.027a15.98 15.98 0 0 0-17.43-3.476A16.01 16.01 0 0 0 0 37.332V176c0 8.832 7.168 16 16 16h138.668a15.987 15.987 0 0 0 14.781-9.879 15.972 15.972 0 0 0-3.476-17.43L104 102.7c40.852-37.418 95.445-60.031 152-60.031 117.633 0 213.332 95.7 213.332 213.332S373.632 469.332 256 469.332c-57.047 0-110.57-22.227-150.7-62.547-8.32-8.363-21.843-8.387-30.163-.066-8.364 8.32-8.407 21.824-.086 30.187C123.266 485.332 187.52 512 256 512c141.164 0 256-114.836 256-256S397.164 0 256 0zm0 0"></path></svg>Reset</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" currentitem="false" style="height: 25px; width: 25px;"></div></div></div></div></div></div></div><div class="VmcJ0_XJbROIveRMJUTn"><button class="t1wStxLOUu4DY4ZC7xEq SiLZXXWIFg0HNBg_YGDy">Timer</button><button class="t1wStxLOUu4DY4ZC7xEq ">Stopwatch</button></div></div><div class="u-flexSpacer"></div><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      tGRANjCTRq185vDT7KQw
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 98.023 98.023" xml:space="preserve" class="f1spIQA1pFEB3nIl2z6F"><path d="M49.011 8.689c-9.983 0-18.541 6.61-22.158 16.012h44.315C67.553 15.3 58.994 8.689 49.011 8.689z"></path><path d="M93.357 48.938H79.496a47.421 47.421 0 0 0 1.348-9.83c4.94-2.967 10.617-8.168 12.028-16.795a4.665 4.665 0 0 0-9.209-1.506c-.759 4.64-3.723 7.724-6.633 9.696H21.009c-2.915-1.974-5.892-5.058-6.65-9.696a4.664 4.664 0 0 0-5.357-3.851 4.665 4.665 0 0 0-3.852 5.357c1.411 8.626 7.087 13.828 12.028 16.795a47.354 47.354 0 0 0 1.348 9.83H4.665a4.666 4.666 0 0 0 0 9.332h17.322a39.081 39.081 0 0 0 4.602 7.083c-6.1 4.571-11.813 12.548-14.584 16.745a4.665 4.665 0 0 0 7.785 5.144c4.624-6.99 10.586-13.596 13.746-15.472 3.796 2.601 8.073 4.261 12.622 4.759V41.297h5.708v35.232c4.543-.498 8.813-2.153 12.608-4.748 3.195 1.89 9.146 8.483 13.76 15.461a4.665 4.665 0 0 0 7.784-5.144c-2.774-4.2-8.473-12.184-14.579-16.751a39.13 39.13 0 0 0 4.596-7.077h17.322a4.666 4.666 0 0 0 0-9.332z"></path></svg> Bug Report</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button><button class="
+      mSXAb2M6T7dcniysR5mT 
+      n6dOP89Ud4hiGY5WrA8J
+      ezSS2L24okbv1JS2exCH
+      H8b4BFynpZEy0J5h9rSV
+      
+      
+      
+      
+      
+      tGRANjCTRq185vDT7KQw
+    " type="button" data-tip="" data-tip-disable="false" tabindex="0" role="button" currentitem="false"><span class="
+    IKJP_p5FEe0iHmjKpNyp
+    
+  "><svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="f1spIQA1pFEB3nIl2z6F"><path d="M272.066 512h-32.133c-25.989 0-47.134-21.144-47.134-47.133v-10.871a206.698 206.698 0 0 1-32.097-13.323l-7.704 7.704c-18.659 18.682-48.548 18.134-66.665-.007l-22.711-22.71c-18.149-18.129-18.671-48.008.006-66.665l7.698-7.698A206.714 206.714 0 0 1 58.003 319.2h-10.87C21.145 319.2 0 298.056 0 272.067v-32.134C0 213.944 21.145 192.8 47.134 192.8h10.87a206.755 206.755 0 0 1 13.323-32.097L63.623 153c-18.666-18.646-18.151-48.528.006-66.665l22.713-22.712c18.159-18.184 48.041-18.638 66.664.006l7.697 7.697A206.893 206.893 0 0 1 192.8 58.003v-10.87C192.8 21.144 213.944 0 239.934 0h32.133C298.056 0 319.2 21.144 319.2 47.133v10.871a206.698 206.698 0 0 1 32.097 13.323l7.704-7.704c18.659-18.682 48.548-18.134 66.665.007l22.711 22.71c18.149 18.129 18.671 48.008-.006 66.665l-7.698 7.698a206.714 206.714 0 0 1 13.323 32.097h10.87c25.989 0 47.134 21.144 47.134 47.133v32.134c0 25.989-21.145 47.133-47.134 47.133h-10.87a206.755 206.755 0 0 1-13.323 32.097l7.704 7.704c18.666 18.646 18.151 48.528-.006 66.665l-22.713 22.712c-18.159 18.184-48.041 18.638-66.664-.006l-7.697-7.697a206.893 206.893 0 0 1-32.097 13.323v10.871c0 25.987-21.144 47.131-47.134 47.131zM165.717 409.17a176.812 176.812 0 0 0 45.831 19.025 14.999 14.999 0 0 1 11.252 14.524v22.148c0 9.447 7.687 17.133 17.134 17.133h32.133c9.447 0 17.134-7.686 17.134-17.133v-22.148a14.999 14.999 0 0 1 11.252-14.524 176.812 176.812 0 0 0 45.831-19.025 15 15 0 0 1 18.243 2.305l15.688 15.689c6.764 6.772 17.626 6.615 24.224.007l22.727-22.726c6.582-6.574 6.802-17.438.006-24.225l-15.695-15.695a15 15 0 0 1-2.305-18.242 176.78 176.78 0 0 0 19.024-45.831 15 15 0 0 1 14.524-11.251h22.147c9.447 0 17.134-7.686 17.134-17.133v-32.134c0-9.447-7.687-17.133-17.134-17.133H442.72a15 15 0 0 1-14.524-11.251 176.815 176.815 0 0 0-19.024-45.831 15 15 0 0 1 2.305-18.242l15.689-15.689c6.782-6.774 6.605-17.634.006-24.225l-22.725-22.725c-6.587-6.596-17.451-6.789-24.225-.006l-15.694 15.695a15 15 0 0 1-18.243 2.305 176.812 176.812 0 0 0-45.831-19.025 14.999 14.999 0 0 1-11.252-14.524v-22.15c0-9.447-7.687-17.133-17.134-17.133h-32.133c-9.447 0-17.134 7.686-17.134 17.133v22.148a14.999 14.999 0 0 1-11.252 14.524 176.812 176.812 0 0 0-45.831 19.025 15.002 15.002 0 0 1-18.243-2.305l-15.688-15.689c-6.764-6.772-17.627-6.615-24.224-.007l-22.727 22.726c-6.582 6.574-6.802 17.437-.006 24.225l15.695 15.695a15 15 0 0 1 2.305 18.242 176.78 176.78 0 0 0-19.024 45.831 15 15 0 0 1-14.524 11.251H47.134C37.687 222.8 30 230.486 30 239.933v32.134c0 9.447 7.687 17.133 17.134 17.133h22.147a15 15 0 0 1 14.524 11.251 176.815 176.815 0 0 0 19.024 45.831 15 15 0 0 1-2.305 18.242l-15.689 15.689c-6.782 6.774-6.605 17.634-.006 24.225l22.725 22.725c6.587 6.596 17.451 6.789 24.225.006l15.694-15.695c3.568-3.567 10.991-6.594 18.244-2.304z"></path><path d="M256 367.4c-61.427 0-111.4-49.974-111.4-111.4S194.573 144.6 256 144.6 367.4 194.574 367.4 256 317.427 367.4 256 367.4zm0-192.8c-44.885 0-81.4 36.516-81.4 81.4s36.516 81.4 81.4 81.4 81.4-36.516 81.4-81.4-36.515-81.4-81.4-81.4z"></path></svg> Settings</span><div class="
+    rOG26Th8sN2PWeIOYFjz
+    tK8QJM6X3YWCP2ZLxkZm
+    
+  "><div class="u4QprmFj0k5cQofnsoMx n5TwbboznTNgeMboJp3Z " data-tip="" style="height: 25px; width: 25px;" currentitem="false"></div></div></button></div></div></div><div class="glasp-ui-wrapper" id="glasp-ui-wrapper" style="height: 0px; width: 0px;"><iframe name="glasp-tooltip-iframe" id="glasp-tooltip-iframe" frameborder="0" scrolling="no" style="position: relative; max-width: 240px !important; height: 48px !important; display: none;" src="./Largest Range _ AlgoExpert_files/saved_resource.html"></iframe><iframe name="glasp-sidebar-iframe" id="glasp-sidebar-iframe" frameborder="0" style="width: 0px !important; min-width: 0px !important; max-width: 300px; height: 100%; background: #FFFFFF; resize: horizontal; direction: rtl; margin: auto; position: fixed; top: 0px; right: 0px; left: auto; z-index: 9000000000000000000;background-image: url(&quot;https://storage.googleapis.com/glasp.co/src/img/loading_200.gif&quot;);background-repeat: no-repeat;background-position: center;background-size: 40px;" src="./Largest Range _ AlgoExpert_files/saved_resource(1).html"></iframe></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><grammarly-popups data-grammarly-shadow-root="true" class="cGcvT"></grammarly-popups></html>
